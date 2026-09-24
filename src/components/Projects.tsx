@@ -66,16 +66,16 @@ export const Projects: React.FC = () => {
     >
       <div className="w-full max-w-[1440px] mx-auto px-3 sm:px-6 lg:px-10 flex flex-col justify-between h-full">
         {/* Section Header */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 mb-2 shrink-0">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 mb-3.5 sm:mb-5 lg:mb-4 shrink-0">
           <div>
-            <div className="inline-flex items-center gap-1.5 px-2 py-0.5 mb-1 bg-retro-panel border-2 border-retro-border text-retro-green font-pixel text-[8px] sm:text-[9px] font-bold shadow-[2px_2px_0px_#2C221E]">
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-1 mb-3.5 sm:mb-4.5 bg-retro-panel border-2 border-retro-border text-retro-green font-pixel text-[8px] sm:text-[9px] font-bold shadow-[2px_2px_0px_#2C221E]">
               <span className="w-2 h-2 bg-retro-greenPastel border border-retro-border inline-block animate-pulse" />
               <span>[STAGE 01] :: PROYECTOS &amp; DESARROLLO</span>
             </div>
-            <h2 className="font-pixel text-base sm:text-xl text-retro-ink leading-none">
+            <h2 className="font-pixel text-base sm:text-xl text-retro-ink leading-tight">
               PROYECTOS DESTACADOS
             </h2>
-            <p className="font-arcade text-sm sm:text-base lg:text-lg text-[#3D3028] font-bold mt-1 max-w-2xl leading-snug">
+            <p className="font-arcade text-sm sm:text-base lg:text-lg text-[#3D3028] font-bold mt-1.5 max-w-2xl leading-snug">
               Selección de proyectos reales desarrollados con rigor técnico y valor práctico. Cada tarjeta incluye demostración en vídeo interactivo, desglose del reto de ingeniería y la funcionalidad implementada.
             </p>
           </div>

@@ -113,3 +113,250 @@
     background-color: #AB8C64 !important;
   }
 }
+
+/* ==========================================================================
+   A4 PRINT STYLES FOR CV / DOSSIER
+   ========================================================================== */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 10mm 12mm;
+  }
+
+  /* Hide background website and interactive controls */
+  header,
+  main,
+  footer,
+  .bg-grid,
+  .crt-scanlines,
+  .no-print {
+    display: none !important;
+  }
+
+  /* Reset document for clean printing */
+  html, body {
+    background: #ffffff !important;
+    color: #0f172a !important;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+    font-size: 10pt !important;
+    line-height: 1.4 !important;
+    height: auto !important;
+    min-height: auto !important;
+    overflow: visible !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    letter-spacing: normal !important;
+  }
+
+  /* Unbox modal overlay to fill A4 page naturally without fixed duplication */
+  .cv-modal-overlay {
+    position: static !important;
+    display: block !important;
+    inset: auto !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+    animation: none !important;
+  }
+
+  .cv-modal-container {
+    position: static !important;
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: #ffffff !important;
+    color: #0f172a !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .cv-modal-body {
+    overflow: visible !important;
+    height: auto !important;
+    max-height: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+    color: #0f172a !important;
+  }
+
+  /* Print specific element rules for crisp readability */
+  .cv-print-header {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 12px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    border-bottom: 2px solid #0f172a !important;
+    padding-bottom: 10px !important;
+    margin-bottom: 14px !important;
+  }
+
+  .cv-print-photo-container {
+    display: block !important;
+    flex: 0 0 auto !important;
+    margin-left: auto !important;
+  }
+
+  .cv-print-photo-frame {
+    padding: 0 !important;
+    background: transparent !important;
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 4px !important;
+    box-shadow: none !important;
+    width: 26mm !important;
+    height: 26mm !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .cv-print-photo {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    display: block !important;
+  }
+
+  .cv-print-name {
+    font-size: 22pt !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.5px !important;
+    color: #0f172a !important;
+    font-family: inherit !important;
+    line-height: 1.1 !important;
+  }
+
+  .cv-print-title {
+    font-size: 11pt !important;
+    font-weight: 600 !important;
+    color: #1e3a8a !important;
+    font-family: inherit !important;
+    margin-top: 4px !important;
+  }
+
+  .cv-print-contacts {
+    font-size: 8.5pt !important;
+    color: #475569 !important;
+    font-weight: 500 !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 4px 14px !important;
+    margin-top: 8px !important;
+    font-family: inherit !important;
+  }
+
+  .cv-print-contacts span {
+    word-break: break-all !important;
+  }
+
+  .cv-print-section-title {
+    font-size: 10.5pt !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.5px !important;
+    text-transform: uppercase !important;
+    color: #0f172a !important;
+    border-bottom: 1.5px solid #cbd5e1 !important;
+    padding-bottom: 4px !important;
+    margin-bottom: 8px !important;
+    font-family: inherit !important;
+    break-after: avoid !important;
+    page-break-after: avoid !important;
+  }
+
+  .cv-print-summary {
+    font-size: 9pt !important;
+    line-height: 1.45 !important;
+    color: #334155 !important;
+    font-family: inherit !important;
+    text-align: justify !important;
+  }
+
+  .cv-print-grid-2 {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+  }
+
+  .cv-print-card {
+    background: #f8fafc !important;
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 4px !important;
+    box-shadow: none !important;
+    padding: 6px 10px !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  .cv-print-card-title {
+    font-size: 9pt !important;
+    font-weight: 700 !important;
+    color: #0f172a !important;
+    font-family: inherit !important;
+  }
+
+  .cv-print-card-sub {
+    font-size: 8.5pt !important;
+    font-weight: 600 !important;
+    color: #1e3a8a !important;
+    font-family: inherit !important;
+  }
+
+  .cv-print-card-period {
+    font-size: 8pt !important;
+    font-weight: 600 !important;
+    color: #64748b !important;
+    font-family: inherit !important;
+  }
+
+  .cv-print-card-desc {
+    font-size: 8.5pt !important;
+    line-height: 1.35 !important;
+    color: #334155 !important;
+    font-family: inherit !important;
+  }
+
+  .cv-print-skill-item {
+    font-size: 8pt !important;
+    line-height: 1.3 !important;
+    font-family: inherit !important;
+    color: #334155 !important;
+  }
+
+  .cv-print-skill-name {
+    font-weight: 700 !important;
+    color: #0f172a !important;
+  }
+
+  .cv-print-item {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  .cv-print-break-avoid {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+}
+

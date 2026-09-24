@@ -29,9 +29,9 @@ export const Hero: React.FC = () => {
             {/* Left Column: Bio & Info */}
             <div className="flex-1 max-w-2xl xl:max-w-3xl flex flex-col justify-center gap-3 sm:gap-4 w-full">
               <div>
-                {/* Tag / Role */}
-                <div className="inline-block px-3 py-1 mb-2 bg-retro-surface border-2 border-retro-border text-retro-green font-pixel text-[10px] sm:text-xs font-bold shadow-[2px_2px_0px_#2C221E]">
-                  &gt; DOBLE_GRADO::INGENIERÍA_INFORMÁTICA_Y_ADE::UGR
+                {/* Tag / Role - Responsive, wraps gracefully on mobile without clipping */}
+                <div className="inline-block max-w-full px-2.5 sm:px-3 py-1 mb-2 bg-retro-surface border-2 border-retro-border text-retro-green font-pixel text-[8px] sm:text-[10px] lg:text-xs font-bold shadow-[2px_2px_0px_#2C221E] leading-relaxed break-words [overflow-wrap:anywhere]">
+                  &gt; DOBLE_GRADO :: INGENIERÍA_INFORMÁTICA_Y_ADE :: UGR
                 </div>
 
                 {/* Name / Title */}
@@ -107,61 +107,61 @@ export const Hero: React.FC = () => {
               </div>
             </div>
 
-            {/* Right Column: Retro Photo Frame & Operator HUD (Fixed, proportional width) */}
-            <div className="shrink-0 flex flex-col items-center w-full max-w-[260px] sm:max-w-[280px] lg:w-[290px] xl:w-[320px] mx-auto lg:mx-0 mt-3 lg:mt-0">
-              <div className="w-full bg-retro-surface pixel-box p-3 sm:p-3.5 border-3 border-retro-border">
+            {/* Right Column: Retro Photo Frame & Operator HUD (Wider card, controlled height) */}
+            <div className="shrink-0 flex flex-col items-center w-full max-w-[340px] sm:max-w-[380px] lg:w-[410px] xl:w-[440px] mx-auto lg:mx-0 mt-4 lg:mt-0">
+              <div className="w-full bg-retro-surface pixel-box p-3.5 sm:p-4 border-3 border-retro-border">
                 {/* Header bar of the photo frame */}
-                <div className="w-full flex items-center justify-between pb-1.5 mb-2 border-b-2 border-retro-border font-pixel text-[9px] sm:text-[10px] text-retro-inkMuted">
-                  <span className="flex items-center gap-1.5 text-retro-green font-bold">
+                <div className="w-full flex items-center justify-between pb-2 mb-2.5 border-b-2 border-retro-border font-pixel text-[10px] sm:text-xs text-retro-inkMuted px-1">
+                  <span className="flex items-center gap-2 text-retro-green font-bold tracking-wider">
                     <span className="w-2 h-2 bg-retro-greenPastel inline-block border border-retro-border animate-pulse" />
                     PHOTO::OPERATOR
                   </span>
-                  <span className="text-retro-yellow font-bold">5º CURSO</span>
+                  <span className="text-retro-yellow font-bold tracking-wider">5º CURSO</span>
                 </div>
 
-                {/* Photo frame */}
-                <div className="w-full aspect-square overflow-hidden border-2 border-retro-border bg-retro-panel relative group">
+                {/* Photo frame - controlled height to avoid getting too tall while wide */}
+                <div className="w-full h-56 sm:h-64 lg:h-[275px] xl:h-[290px] overflow-hidden border-2 border-retro-border bg-retro-panel relative group">
                   <img
                     src={profilePic}
                     alt={PERSONAL_INFO.name}
                     className="w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
                   />
                   {/* Subtle pixel scanlines/corners */}
-                  <div className="absolute top-1 left-1 w-2 h-2 border-t-2 border-l-2 border-retro-sandLight pointer-events-none" />
-                  <div className="absolute top-1 right-1 w-2 h-2 border-t-2 border-r-2 border-retro-sandLight pointer-events-none" />
-                  <div className="absolute bottom-1 left-1 w-2 h-2 border-b-2 border-l-2 border-retro-sandLight pointer-events-none" />
-                  <div className="absolute bottom-1 right-1 w-2 h-2 border-b-2 border-r-2 border-retro-sandLight pointer-events-none" />
+                  <div className="absolute top-1.5 left-1.5 w-2.5 h-2.5 border-t-2 border-l-2 border-retro-sandLight pointer-events-none" />
+                  <div className="absolute top-1.5 right-1.5 w-2.5 h-2.5 border-t-2 border-r-2 border-retro-sandLight pointer-events-none" />
+                  <div className="absolute bottom-1.5 left-1.5 w-2.5 h-2.5 border-b-2 border-l-2 border-retro-sandLight pointer-events-none" />
+                  <div className="absolute bottom-1.5 right-1.5 w-2.5 h-2.5 border-b-2 border-r-2 border-retro-sandLight pointer-events-none" />
                 </div>
 
                 {/* Footer bar of photo */}
-                <div className="w-full mt-2 pt-2 border-t-2 border-retro-border flex items-center justify-between font-pixel text-[9px] sm:text-[10px] text-retro-inkLight">
-                  <span>DAVID</span>
-                  <span className="text-retro-cyan font-bold">UGR // INF+ADE</span>
+                <div className="w-full mt-2.5 pt-2.5 border-t-2 border-retro-border flex items-center justify-between font-pixel text-[10px] sm:text-xs text-retro-inkLight px-1">
+                  <span className="tracking-wider font-bold">DAVID</span>
+                  <span className="text-retro-cyan font-bold tracking-wider">UGR // INF+ADE</span>
                 </div>
               </div>
 
               {/* Status telemetry box below photo */}
-              <div className="w-full mt-2.5 p-2 sm:p-2.5 bg-retro-surface pixel-box border-2 border-retro-border font-pixel text-[9px] sm:text-[10px] text-retro-inkMuted flex flex-col gap-1.5 shadow-[2px_2px_0px_#2C221E]">
-                <div className="flex items-center justify-between">
-                  <span className="flex items-center gap-1.5 text-retro-inkLight">
-                    <MapPin className="w-3 h-3 text-retro-yellow" />
+              <div className="w-full mt-3 p-3 bg-retro-surface pixel-box border-2 border-retro-border font-pixel text-[10px] sm:text-xs text-retro-inkMuted flex flex-col gap-2 shadow-[2px_2px_0px_#2C221E]">
+                <div className="flex items-center justify-between px-1">
+                  <span className="flex items-center gap-2 text-retro-inkLight tracking-wide">
+                    <MapPin className="w-3.5 h-3.5 text-retro-yellow shrink-0" />
                     UBICACIÓN:
                   </span>
-                  <span className="text-retro-yellow font-bold">GRANADA, ES</span>
+                  <span className="text-retro-yellow font-bold tracking-wider">GRANADA, ES</span>
                 </div>
-                <div className="flex items-center justify-between">
-                  <span className="flex items-center gap-1.5 text-retro-inkLight">
-                    <CheckCircle2 className="w-3 h-3 text-retro-green" />
+                <div className="flex items-center justify-between px-1">
+                  <span className="flex items-center gap-2 text-retro-inkLight tracking-wide">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-retro-green shrink-0" />
                     ENFOQUE:
                   </span>
-                  <span className="text-retro-green font-bold">ING_SOFTWARE</span>
+                  <span className="text-retro-green font-bold tracking-wider">ING_SOFTWARE</span>
                 </div>
-                <div className="flex items-center justify-between">
-                  <span className="flex items-center gap-1.5 text-retro-inkLight">
-                    <Terminal className="w-3 h-3 text-retro-cyan" />
+                <div className="flex items-center justify-between px-1">
+                  <span className="flex items-center gap-2 text-retro-inkLight tracking-wide">
+                    <Terminal className="w-3.5 h-3.5 text-retro-cyan shrink-0" />
                     ENTORNO:
                   </span>
-                  <span className="text-retro-cyan font-bold">LINUX / WINDOWS</span>
+                  <span className="text-retro-cyan font-bold tracking-wider">LINUX / WINDOWS</span>
                 </div>
               </div>
             </div>

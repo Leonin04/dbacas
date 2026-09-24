@@ -12,7 +12,7 @@ export const PERSONAL_INFO = {
   linkedin: "https://www.linkedin.com/in/david-bacas-posadas-07a888312/",
   instagram: "https://www.instagram.com/davidbp04",
   instagramHandle: "davidbp04",
-  email: "davidbacas.dev@gmail.com",
+  email: "davidbacasposadas@gmail.com",
 };
 
 export const PROJECTS: Project[] = [
