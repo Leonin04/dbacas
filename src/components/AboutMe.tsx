@@ -26,17 +26,18 @@ export const AboutMe: React.FC<AboutMeProps> = ({ onOpenCv }) => {
   ];
 
   return (
-    <section id="sobre-mi" className="relative min-h-[calc(100vh-54px)] flex flex-col justify-center py-8 sm:py-12 border-b-4 border-retro-border bg-retro-bg">
+    <section id="sobre-mi" className="relative min-h-[calc(100vh-54px)] flex flex-col justify-center py-8 sm:py-12 border-b-4 border-retro-border bg-retro-bgAlt">
       <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10">
         {/* Section Header */}
         <div className="mb-10">
-          <div className="text-retro-cyan font-pixel text-xs mb-2 font-bold">
-            [STAGE 03] :: PERFIL &amp; FILOSOFÍA TÉCNICA
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 mb-2 bg-retro-panel border-2 border-retro-border text-retro-cyan font-pixel text-[10px] font-bold shadow-[2px_2px_0px_#2C221E]">
+            <span className="w-2 h-2 bg-retro-cyanPastel border border-retro-border inline-block animate-pulse" />
+            <span>[STAGE 03] :: PERFIL &amp; FILOSOFÍA TÉCNICA</span>
           </div>
           <h2 className="font-pixel text-xl sm:text-3xl text-retro-ink">
             SOBRE MÍ
           </h2>
-          <p className="font-arcade text-xl text-retro-inkMuted mt-2 max-w-xl">
+          <p className="font-arcade text-xl text-[#3D3028] font-bold mt-2 max-w-xl">
             Enfoque de ingeniería pragmático: resolver cuellos de botella con fundamentos sólidos.
           </p>
         </div>
@@ -73,7 +74,7 @@ export const AboutMe: React.FC<AboutMeProps> = ({ onOpenCv }) => {
                 className="bg-retro-panel pixel-box p-5 space-y-2"
               >
                 <div className="flex items-center gap-2">
-                  <span className="p-1 bg-retro-surface border border-retro-border">
+                  <span className="p-1.5 bg-retro-surfaceAlt border border-retro-border">
                     {p.icon}
                   </span>
                   <h3 className="font-pixel text-xs text-retro-ink font-bold">

@@ -10,7 +10,9 @@ export default {
       colors: {
         retro: {
           bg: '#F6F0E6',
+          bgAlt: '#BFA078',
           surface: '#EDE4D4',
+          surfaceAlt: '#AB8C64',
           panel: '#FFFDF9',
           panelAlt: '#F2EAE0',
           border: '#2C221E',

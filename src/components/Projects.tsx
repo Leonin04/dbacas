@@ -48,26 +48,26 @@ export const Projects: React.FC = () => {
   return (
     <section
       id="proyectos"
-      className="relative min-h-[calc(100vh-54px)] flex flex-col justify-center py-6 sm:py-8 border-b-4 border-retro-border bg-retro-bg overflow-hidden"
+      className="relative min-h-[calc(100vh-54px)] flex flex-col justify-center py-6 sm:py-8 border-b-4 border-retro-border bg-retro-bgAlt overflow-hidden"
     >
       <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 flex flex-col justify-between flex-1">
         {/* Section Header (Clean: Title & Category Filters only) */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 mb-3">
           <div>
-            <div className="text-retro-green font-pixel text-[10px] sm:text-xs mb-1 font-bold flex items-center gap-1.5">
-              <span className="w-2 h-2 bg-retro-greenPastel border border-retro-border inline-block" />
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-1 mb-1.5 bg-retro-panel border-2 border-retro-border text-retro-green font-pixel text-[9px] sm:text-[10px] font-bold shadow-[2px_2px_0px_#2C221E]">
+              <span className="w-2 h-2 bg-retro-greenPastel border border-retro-border inline-block animate-pulse" />
               <span>[STAGE 01] :: INGENIERÍA &amp; CASOS DE ESTUDIO</span>
             </div>
             <h2 className="font-pixel text-lg sm:text-2xl text-retro-ink">
               PROYECTOS DESTACADOS
             </h2>
-            <p className="font-arcade text-lg sm:text-xl text-retro-inkMuted max-w-2xl leading-tight">
+            <p className="font-arcade text-lg sm:text-xl text-[#3D3028] font-bold max-w-2xl leading-tight">
               Arquitecturas reales con foco en throughput, eficiencia de memoria y estabilidad bajo carga.
             </p>
           </div>
 
           {/* Category Filter Chips */}
-          <div className="flex flex-wrap items-center gap-1 p-1 bg-retro-surface pixel-box">
+          <div className="flex flex-wrap items-center gap-1 p-1 bg-retro-surfaceAlt pixel-box">
             {categories.map((cat) => (
               <button
                 key={cat}
@@ -206,7 +206,7 @@ export const Projects: React.FC = () => {
         </div>
 
         {/* Bottom Carousel Controls: Arrows underneath projects + Dots & Status */}
-        <div className="flex flex-wrap items-center justify-between gap-3 pt-3 border-t-2 border-retro-border/20 font-pixel text-[9px] text-retro-inkMuted">
+        <div className="flex flex-wrap items-center justify-between gap-3 pt-3 border-t-2 border-retro-border/25 font-pixel text-[9px] text-retro-inkMuted">
           {/* Left: Pagination Dots */}
           <div className="flex items-center gap-1.5">
             <span className="text-[8px] text-retro-inkLight mr-1">VISTA:</span>
@@ -217,7 +217,7 @@ export const Projects: React.FC = () => {
                 className={`w-3 h-3 border border-retro-border transition-all ${
                   currentIndex === idx
                     ? 'bg-retro-greenPastel scale-110 shadow-[1px_1px_0px_#2C221E]'
-                    : 'bg-retro-panel hover:bg-retro-surface'
+                    : 'bg-retro-panel hover:bg-retro-surfaceAlt'
                 }`}
                 aria-label={`Ir a diapositiva ${idx + 1}`}
               />
@@ -237,7 +237,7 @@ export const Projects: React.FC = () => {
               <span>ANTERIOR</span>
             </button>
 
-            <div className="px-3 py-1.5 bg-retro-surface pixel-box font-pixel text-[9px] text-retro-ink font-bold whitespace-nowrap">
+            <div className="px-3 py-1.5 bg-retro-panel border-2 border-retro-border font-pixel text-[9px] text-retro-ink font-bold whitespace-nowrap shadow-[2px_2px_0px_#2C221E]">
               {filteredProjects.length > 0 ? (
                 <span>
                   {currentIndex + 1}-{Math.min(currentIndex + visibleCount, filteredProjects.length)} / {filteredProjects.length}

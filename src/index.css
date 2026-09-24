@@ -95,4 +95,13 @@
     transform: translate(2px, 2px);
     box-shadow: 1px 1px 0px #2C221E;
   }
+
+  /* Stage alternating darker background */
+  .bg-retro-bgAlt {
+    background-color: #BFA078 !important;
+  }
+
+  .bg-retro-surfaceAlt {
+    background-color: #AB8C64 !important;
+  }
 }

@@ -109,7 +109,7 @@ export const TechStack: React.FC = () => {
         {/* Section Header - Compact */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-2.5 mb-2.5">
           <div>
-            <div className="text-retro-yellow font-pixel text-[9px] sm:text-[10px] mb-1 font-bold flex items-center gap-1.5">
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-1 mb-1.5 bg-retro-surface border-2 border-retro-border text-retro-yellow font-pixel text-[9px] sm:text-[10px] font-bold">
               <Sparkles className="w-3 h-3 text-retro-yellow" />
               <span>[STAGE 02] :: CONJUNTOS DE DESARROLLO &amp; CARTUCHOS</span>
             </div>
