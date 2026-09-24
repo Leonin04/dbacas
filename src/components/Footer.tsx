@@ -8,7 +8,7 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="border-t-4 border-retro-border bg-retro-surface py-8 text-retro-inkMuted font-pixel text-[10px]">
+    <footer className="border-t-4 border-retro-border bg-retro-surface py-8 text-retro-inkMuted font-pixel text-[10px] snap-start">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-6 pb-6 border-b-2 border-retro-border">
           {/* Identity */}

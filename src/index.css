@@ -9,6 +9,8 @@
 
   html {
     scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+    scroll-padding-top: 56px;
     background-color: #F6F0E6;
     color: #2C221E;
   }

@@ -1,13 +1,27 @@
 import React, { useState, useEffect } from 'react';
-import { Github, ExternalLink, Activity, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Github, ExternalLink, ChevronLeft, ChevronRight, Film } from 'lucide-react';
 import { PROJECTS } from '../data/portfolioData';
+
+// Vite dynamic glob import for all videos in src/data/proyectos
+const videoModules = import.meta.glob<string>('../data/proyectos/*/*.{mp4,webm,mov,MP4,WEBM,MOV}', {
+  eager: true,
+  import: 'default',
+});
+
+const getVideoUrl = (folderName?: string): string | undefined => {
+  if (!folderName) return undefined;
+  const match = Object.entries(videoModules).find(([path]) =>
+    path.toLowerCase().includes(`/proyectos/${folderName.toLowerCase()}/`)
+  );
+  return match ? match[1] : undefined;
+};
 
 export const Projects: React.FC = () => {
   const [filter, setFilter] = useState<string>('Todos');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [visibleCount, setVisibleCount] = useState(3);
 
-  const categories = ['Todos', 'Sistemas', 'Full-Stack', 'Gráficos / Tooling', 'Infraestructura'];
+  const categories = ['Todos', 'Diseño', 'Implementación'];
 
   // Responsive items visible calculation
   useEffect(() => {
@@ -48,31 +62,31 @@ export const Projects: React.FC = () => {
   return (
     <section
       id="proyectos"
-      className="relative min-h-[calc(100vh-54px)] flex flex-col justify-center py-6 sm:py-8 border-b-4 border-retro-border bg-retro-bgAlt overflow-hidden"
+      className="relative h-[calc(100vh-56px)] max-h-[calc(100vh-56px)] snap-start flex flex-col justify-between py-2 sm:py-3 border-b-4 border-retro-border bg-retro-bgAlt overflow-hidden"
     >
-      <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 flex flex-col justify-between flex-1">
-        {/* Section Header (Clean: Title & Category Filters only) */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-3 mb-3">
+      <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 flex flex-col justify-between h-full">
+        {/* Section Header */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2 shrink-0">
           <div>
-            <div className="inline-flex items-center gap-1.5 px-2.5 py-1 mb-1.5 bg-retro-panel border-2 border-retro-border text-retro-green font-pixel text-[9px] sm:text-[10px] font-bold shadow-[2px_2px_0px_#2C221E]">
+            <div className="inline-flex items-center gap-1.5 px-2 py-0.5 mb-1 bg-retro-panel border-2 border-retro-border text-retro-green font-pixel text-[8px] sm:text-[9px] font-bold shadow-[2px_2px_0px_#2C221E]">
               <span className="w-2 h-2 bg-retro-greenPastel border border-retro-border inline-block animate-pulse" />
-              <span>[STAGE 01] :: INGENIERÍA &amp; CASOS DE ESTUDIO</span>
+              <span>[STAGE 01] :: PROYECTOS &amp; DESARROLLO</span>
             </div>
-            <h2 className="font-pixel text-lg sm:text-2xl text-retro-ink">
+            <h2 className="font-pixel text-base sm:text-xl text-retro-ink leading-none">
               PROYECTOS DESTACADOS
             </h2>
-            <p className="font-arcade text-lg sm:text-xl text-[#3D3028] font-bold max-w-2xl leading-tight">
-              Arquitecturas reales con foco en throughput, eficiencia de memoria y estabilidad bajo carga.
+            <p className="font-arcade text-sm sm:text-base lg:text-lg text-[#3D3028] font-bold mt-1 max-w-2xl leading-snug">
+              Selección de proyectos reales desarrollados con rigor técnico y valor práctico. Cada tarjeta incluye demostración en vídeo interactivo, desglose del reto de ingeniería y la funcionalidad implementada.
             </p>
           </div>
 
-          {/* Category Filter Chips */}
-          <div className="flex flex-wrap items-center gap-1 p-1 bg-retro-surfaceAlt pixel-box">
+          {/* 3 Category Filter Chips */}
+          <div className="flex items-center gap-1 p-0.5 bg-retro-surfaceAlt pixel-box shrink-0">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setFilter(cat)}
-                className={`pixel-btn px-2.5 py-1 font-pixel text-[8px] sm:text-[9px] uppercase transition-all ${
+                className={`pixel-btn px-2.5 py-0.5 font-pixel text-[8px] sm:text-[9px] uppercase transition-all ${
                   filter === cat
                     ? 'bg-retro-greenPastel text-retro-ink font-bold shadow-[1px_1px_0px_#2C221E]'
                     : 'bg-retro-panel text-retro-inkMuted hover:text-retro-ink'
@@ -85,9 +99,9 @@ export const Projects: React.FC = () => {
         </div>
 
         {/* Carousel Viewport & Slider */}
-        <div className="relative w-full overflow-hidden py-1 my-auto">
+        <div className="relative w-full overflow-hidden my-auto py-0.5">
           {filteredProjects.length === 0 ? (
-            <div className="p-8 text-center bg-retro-panel pixel-box font-arcade text-xl text-retro-inkMuted">
+            <div className="p-6 text-center bg-retro-panel pixel-box font-arcade text-lg text-retro-inkMuted">
               No hay proyectos en esta categoría por ahora.
             </div>
           ) : (
@@ -97,116 +111,130 @@ export const Projects: React.FC = () => {
                 transform: `translateX(-${currentIndex * (100 / visibleCount)}%)`,
               }}
             >
-              {filteredProjects.map((project) => (
-                <div
-                  key={project.id}
-                  style={{ width: `${100 / visibleCount}%` }}
-                  className="flex-shrink-0 px-2 sm:px-2.5"
-                >
-                  <article className="bg-retro-panel pixel-box p-4 sm:p-5 flex flex-col justify-between h-full hover:border-retro-cyan hover:shadow-[5px_5px_0px_#2C221E] transition-all relative">
-                    <div>
-                      {/* Top Header: Category Tag & Source/Demo Links */}
-                      <div className="flex items-center justify-between gap-2 mb-2">
-                        <span className="px-2 py-0.5 bg-retro-yellowLight border border-retro-border text-retro-yellow font-pixel text-[8px] uppercase font-bold">
-                          &gt; {project.category}
-                        </span>
+              {filteredProjects.map((project) => {
+                const videoUrl = getVideoUrl(project.videoFolder);
 
-                        <div className="flex items-center gap-1.5">
-                          <a
-                            href={project.githubUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="pixel-btn p-1 bg-retro-surface border border-retro-border text-retro-ink hover:bg-retro-greenPastel hover:text-retro-ink transition-colors"
-                            title="Código fuente en GitHub"
-                            aria-label={`Ver repo de ${project.title}`}
-                          >
-                            <Github className="w-3.5 h-3.5" />
-                          </a>
-                          {project.demoUrl && (
+                return (
+                  <div
+                    key={project.id}
+                    style={{ width: `${100 / visibleCount}%` }}
+                    className="flex-shrink-0 px-2 sm:px-2.5"
+                  >
+                    <article className="bg-retro-panel pixel-box p-2.5 sm:p-3 flex flex-col justify-between h-full hover:border-retro-cyan hover:shadow-[4px_4px_0px_#2C221E] transition-all relative">
+                      <div>
+                        {/* Top Header: Category Tag & Source/Demo Links */}
+                        <div className="flex items-center justify-between gap-2 mb-1.5">
+                          <span className="px-2 py-0.5 bg-retro-yellowLight border border-retro-border text-retro-yellow font-pixel text-[8px] uppercase font-bold">
+                            &gt; {project.category}
+                          </span>
+
+                          <div className="flex items-center gap-1.5">
                             <a
-                              href={project.demoUrl}
+                              href={project.githubUrl}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="pixel-btn p-1 bg-retro-surface border border-retro-border text-retro-ink hover:bg-retro-cyanPastel hover:text-retro-ink transition-colors"
-                              title="Ver demo o benchmarks"
-                              aria-label={`Ver demo de ${project.title}`}
+                              className="pixel-btn p-1 bg-retro-surface border border-retro-border text-retro-ink hover:bg-retro-greenPastel hover:text-retro-ink transition-colors"
+                              title="Código fuente en GitHub"
+                              aria-label={`Ver repositorio de ${project.title}`}
                             >
-                              <ExternalLink className="w-3.5 h-3.5" />
+                              <Github className="w-3.5 h-3.5" />
                             </a>
+                            {project.demoUrl && (
+                              <a
+                                href={project.demoUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="pixel-btn p-1 bg-retro-surface border border-retro-border text-retro-ink hover:bg-retro-cyanPastel hover:text-retro-ink transition-colors"
+                                title="Ver demo o enlace"
+                                aria-label={`Ver demo de ${project.title}`}
+                              >
+                                <ExternalLink className="w-3.5 h-3.5" />
+                              </a>
+                            )}
+                          </div>
+                        </div>
+
+                        {/* Project Title */}
+                        <h3 className="font-pixel text-sm sm:text-base text-retro-ink mb-1.5 leading-tight font-bold">
+                          {project.title}
+                        </h3>
+
+                        {/* Stacked Sub-Cards: Reto Técnico (Arriba) y Funcionalidad (Debajo) */}
+                        <div className="space-y-1 sm:space-y-1.5 mb-1.5">
+                          {/* Sub-Card 1: Reto Técnico */}
+                          <div className="p-1.5 bg-retro-surface/90 border border-retro-border/40 font-arcade text-xs sm:text-sm leading-snug shadow-[1px_1px_0px_#2C221E]">
+                            <span className="font-pixel text-[7px] sm:text-[8px] text-retro-red uppercase block mb-0.5 font-bold">
+                              [RETO TÉCNICO]
+                            </span>
+                            <p className="text-retro-ink line-clamp-2 leading-tight">
+                              {project.challenge}
+                            </p>
+                          </div>
+
+                          {/* Sub-Card 2: Funcionalidad */}
+                          <div className="p-1.5 bg-retro-surface/90 border border-retro-border/40 font-arcade text-xs sm:text-sm leading-snug shadow-[1px_1px_0px_#2C221E]">
+                            <span className="font-pixel text-[7px] sm:text-[8px] text-retro-cyan uppercase block mb-0.5 font-bold">
+                              [FUNCIONALIDAD]
+                            </span>
+                            <p className="text-retro-ink line-clamp-2 leading-tight">
+                              {project.functionality || project.challenge}
+                            </p>
+                          </div>
+                        </div>
+
+                        {/* Video Demo Player - Contained height */}
+                        <div className="relative w-full h-28 sm:h-32 md:h-36 max-h-36 bg-[#1C1613] border-2 border-retro-border overflow-hidden shadow-[2px_2px_0px_#2C221E] my-1">
+                          {videoUrl ? (
+                            <video
+                              src={videoUrl}
+                              controls
+                              playsInline
+                              muted
+                              loop
+                              preload="metadata"
+                              className="w-full h-full object-cover"
+                            />
+                          ) : (
+                            <div className="w-full h-full flex flex-col items-center justify-center p-2 text-center bg-[#251D18] text-retro-sand font-pixel relative select-none">
+                              {/* CRT Scanline Effect */}
+                              <div className="absolute inset-0 bg-scanlines opacity-25 pointer-events-none" />
+                              <div className="w-7 h-7 border-2 border-retro-yellowPastel flex items-center justify-center mb-1 bg-retro-surface/30">
+                                <Film className="w-3.5 h-3.5 text-retro-yellowPastel animate-pulse" />
+                              </div>
+                              <span className="text-[8px] sm:text-[9px] text-retro-yellow font-bold uppercase tracking-wider">
+                                VÍDEO DEMO EN CARGA
+                              </span>
+                              <span className="text-[7px] sm:text-[8px] text-retro-sandLight font-arcade mt-0.5 max-w-[200px] truncate">
+                                data/proyectos/{project.videoFolder || project.id}
+                              </span>
+                            </div>
                           )}
                         </div>
                       </div>
 
-                      {/* Project Title */}
-                      <h3 className="font-pixel text-sm sm:text-base text-retro-ink mb-2 leading-snug">
-                        {project.title}
-                      </h3>
-
-                      {/* Technical Challenge & Solution */}
-                      <div className="space-y-1.5 font-arcade text-base sm:text-lg leading-snug">
-                        <div className="p-2 sm:p-2.5 bg-retro-surface/80 border border-retro-border/30">
-                          <span className="font-pixel text-[8px] text-retro-red uppercase block mb-0.5 font-bold">
-                            [RETO TÉCNICO]
-                          </span>
-                          <p className="text-retro-ink line-clamp-2">
-                            {project.challenge}
-                          </p>
-                        </div>
-
-                        <div className="p-2 sm:p-2.5 bg-retro-surface/80 border border-retro-border/30">
-                          <span className="font-pixel text-[8px] text-retro-cyan uppercase block mb-0.5 font-bold">
-                            [ARQUITECTURA &amp; SOLUCIÓN]
-                          </span>
-                          <p className="text-retro-inkMuted line-clamp-2">
-                            {project.solution}
-                          </p>
+                      {/* Bottom: Tech Stack badges */}
+                      <div className="mt-1.5 pt-1.5 border-t-2 border-retro-border">
+                        <div className="flex flex-wrap gap-1">
+                          {project.technologies.map((tech) => (
+                            <span
+                              key={tech}
+                              className="px-1.5 py-0.5 bg-retro-surface border border-retro-border font-pixel text-[7px] sm:text-[8px] text-retro-green font-bold shadow-[1px_1px_0px_#2C221E]"
+                            >
+                              {tech}
+                            </span>
+                          ))}
                         </div>
                       </div>
-                    </div>
-
-                    {/* Bottom: Tech Stack badges & Metrics */}
-                    <div className="mt-3 pt-2.5 border-t-2 border-retro-border space-y-2">
-                      {/* Tech badges */}
-                      <div className="flex flex-wrap gap-1">
-                        {project.technologies.slice(0, 4).map((tech) => (
-                          <span
-                            key={tech}
-                            className="px-1.5 py-0.5 bg-retro-surface border border-retro-border font-pixel text-[8px] text-retro-green font-bold"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                        {project.technologies.length > 4 && (
-                          <span className="px-1 py-0.5 font-pixel text-[7px] text-retro-inkMuted">
-                            +{project.technologies.length - 4}
-                          </span>
-                        )}
-                      </div>
-
-                      {/* Metrics */}
-                      <div className="grid grid-cols-3 gap-1.5 p-1.5 bg-retro-surface border-2 border-retro-border font-arcade text-center">
-                        {project.metrics.map((metric, i) => (
-                          <div key={i} className="p-0.5">
-                            <div className="text-[9px] font-pixel text-retro-inkLight uppercase truncate">
-                              {metric.label}
-                            </div>
-                            <div className="text-sm sm:text-base font-bold text-retro-yellow flex items-center justify-center gap-1 mt-0.5">
-                              <Activity className="w-2.5 h-2.5 text-retro-yellow shrink-0" />
-                              <span className="truncate">{metric.value}</span>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </article>
-                </div>
-              ))}
+                    </article>
+                  </div>
+                );
+              })}
             </div>
           )}
         </div>
 
         {/* Bottom Carousel Controls: Arrows underneath projects + Dots & Status */}
-        <div className="flex flex-wrap items-center justify-between gap-3 pt-3 border-t-2 border-retro-border/25 font-pixel text-[9px] text-retro-inkMuted">
+        <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t-2 border-retro-border/25 font-pixel text-[8px] sm:text-[9px] text-retro-inkMuted shrink-0">
           {/* Left: Pagination Dots */}
           <div className="flex items-center gap-1.5">
             <span className="text-[8px] text-retro-inkLight mr-1">VISTA:</span>
@@ -214,7 +242,7 @@ export const Projects: React.FC = () => {
               <button
                 key={idx}
                 onClick={() => setCurrentIndex(idx)}
-                className={`w-3 h-3 border border-retro-border transition-all ${
+                className={`w-2.5 h-2.5 border border-retro-border transition-all ${
                   currentIndex === idx
                     ? 'bg-retro-greenPastel scale-110 shadow-[1px_1px_0px_#2C221E]'
                     : 'bg-retro-panel hover:bg-retro-surfaceAlt'
@@ -229,15 +257,15 @@ export const Projects: React.FC = () => {
             <button
               onClick={handlePrev}
               disabled={currentIndex === 0}
-              className="pixel-btn px-3 py-1.5 bg-retro-panel text-retro-ink hover:bg-retro-yellowPastel disabled:opacity-40 disabled:pointer-events-none transition-colors flex items-center gap-1 font-pixel text-[9px]"
+              className="pixel-btn px-2.5 py-1 bg-retro-panel text-retro-ink hover:bg-retro-yellowPastel disabled:opacity-40 disabled:pointer-events-none transition-colors flex items-center gap-1 font-pixel text-[8px] sm:text-[9px]"
               aria-label="Proyecto anterior"
               title="Anterior"
             >
-              <ChevronLeft className="w-4 h-4" />
+              <ChevronLeft className="w-3.5 h-3.5" />
               <span>ANTERIOR</span>
             </button>
 
-            <div className="px-3 py-1.5 bg-retro-panel border-2 border-retro-border font-pixel text-[9px] text-retro-ink font-bold whitespace-nowrap shadow-[2px_2px_0px_#2C221E]">
+            <div className="px-2.5 py-1 bg-retro-panel border-2 border-retro-border font-pixel text-[8px] sm:text-[9px] text-retro-ink font-bold whitespace-nowrap shadow-[2px_2px_0px_#2C221E]">
               {filteredProjects.length > 0 ? (
                 <span>
                   {currentIndex + 1}-{Math.min(currentIndex + visibleCount, filteredProjects.length)} / {filteredProjects.length}
@@ -250,12 +278,12 @@ export const Projects: React.FC = () => {
             <button
               onClick={handleNext}
               disabled={currentIndex >= maxIndex}
-              className="pixel-btn px-3 py-1.5 bg-retro-panel text-retro-ink hover:bg-retro-yellowPastel disabled:opacity-40 disabled:pointer-events-none transition-colors flex items-center gap-1 font-pixel text-[9px]"
+              className="pixel-btn px-2.5 py-1 bg-retro-panel text-retro-ink hover:bg-retro-yellowPastel disabled:opacity-40 disabled:pointer-events-none transition-colors flex items-center gap-1 font-pixel text-[8px] sm:text-[9px]"
               aria-label="Proyecto siguiente"
               title="Siguiente"
             >
               <span>SIGUIENTE</span>
-              <ChevronRight className="w-4 h-4" />
+              <ChevronRight className="w-3.5 h-3.5" />
             </button>
           </div>
         </div>
@@ -263,3 +291,4 @@ export const Projects: React.FC = () => {
     </section>
   );
 };
+

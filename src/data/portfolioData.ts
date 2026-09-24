@@ -1,13 +1,13 @@
 import { Project, SkillCategory } from '../types';
 
 export const PERSONAL_INFO = {
-  name: "David Bacas",
+  name: "David Bacas Posadas",
   handle: "Leonin04",
-  role: "Software Engineer / Systems & Full-Stack",
-  headline: "Arquitectura de software de alto rendimiento, sistemas concurrentes y plataformas web modernas.",
-  subtext: "Especializado en ingeniería de software orientada a eficiencia de memoria, pipelines de baja latencia y aplicaciones web escalables. Enfoque riguroso en resolver cuellos de botella de arquitectura sin dependencias innecesarias.",
-  location: "Madrid / Remoto",
-  availability: "Open to opportunities / Available for work",
+  role: "Doble Grado en Ingeniería Informática y ADE | 5º Curso - UGR",
+  headline: "Ingeniería del software y arquitectura de sistemas con visión estratégica de negocio y producto.",
+  subtext: "Estudiante de 5º curso del Doble Grado en Ingeniería Informática y ADE en la Universidad de Granada (UGR), cursando la mención en Ingeniería del Software. Apasionado por la tecnología desde siempre. Disfruto aprendiendo.",
+  location: "Granada, España",
+  availability: "5º Curso Activo // Abierto a nuevos proyectos y oportunidades",
   github: "https://github.com/Leonin04",
   linkedin: "https://www.linkedin.com/in/david-bacas",
   email: "davidbacas.dev@gmail.com",
@@ -15,139 +15,150 @@ export const PERSONAL_INFO = {
 
 export const PROJECTS: Project[] = [
   {
-    id: "streamcore-engine",
-    title: "StreamCore Engine",
-    category: "Sistemas",
-    challenge: "Minimizar latencia en ingestión y procesamiento de flujos masivos de datos eliminando contención de memoria en el heap y bloqueos de hilos.",
-    solution: "Motor en C++20 con buffers circulares libres de bloqueo (lock-free ring buffers), vectorización SIMD para filtrado por lotes y cero copias en el paso de mensajes interproceso.",
-    technologies: ["C++20", "SIMD (AVX2)", "POSIX", "CMake", "Google Benchmark"],
-    metrics: [
-      { label: "Throughput", value: "1.85M msg/s" },
-      { label: "Latencia p99", value: "< 110 µs" },
-      { label: "Asignación Heap", value: "0 bytes/hot-path" }
-    ],
-    githubUrl: "https://github.com/Leonin04/streamcore-engine",
-    demoUrl: "https://github.com/Leonin04/streamcore-engine#benchmarks",
+    id: "goiko-finder",
+    title: "Goiko Finder",
+    category: "Diseño",
+    challenge: "Análisis de fricciones heurísticas y fallos de usabilidad web para redefinir la arquitectura de interacción.",
+    functionality: "Revisión de la web de Goiko, búsqueda predictiva y prototipo de alta fidelidad con solución optimizada.",
+    technologies: ["UX Research", "Usability Testing", "Figma", "HTML/CSS", "Prototipado"],
+    githubUrl: "https://github.com/DIUGrupoColesterMax/UX_CaseStudyColesterMax",
+    videoFolder: "GoikoFinder",
     featured: true
   },
   {
-    id: "nexus-crdt-sync",
-    title: "Nexus Sync Engine",
-    category: "Full-Stack",
-    challenge: "Evitar colisiones y divergencias de estado en edición concurrente multiusuario en tiempo real sin requerir una base de datos autoritativa centralizada.",
-    solution: "Implementación de tipos de datos replicados libres de conflicto (CRDTs basados en estado) con serialización binaria compacta, sincronización híbrida WebSockets/WebRTC y persistencia en Redis.",
-    technologies: ["TypeScript", "React 18", "WebSockets", "WebRTC", "Redis", "Node.js"],
-    metrics: [
-      { label: "Propagación", value: "< 14 ms" },
-      { label: "Concurrencia", value: "500+ peers" },
-      { label: "Complejidad merge", value: "O(log N)" }
-    ],
-    githubUrl: "https://github.com/Leonin04/nexus-crdt-sync",
-    demoUrl: "https://github.com/Leonin04/nexus-crdt-sync",
+    id: "frog-off",
+    title: "FrogOff",
+    category: "Implementación",
+    challenge: "Modelado 3D íntegro y programación de físicas, colisiones y cámara fluida en navegador sobre WebGL.",
+    functionality: "Juego 3D en laberinto con recolección de objetos, obstáculos interactivos y renderizado en Three.js.",
+    technologies: ["Three.js", "JavaScript", "WebGL", "Modelado 3D", "Python"],
+    githubUrl: "https://github.com/Leonin04/FrogOff",
+    videoFolder: "FroggOff",
     featured: true
   },
   {
-    id: "webgpu-shaderforge",
-    title: "WebGPU ShaderForge",
-    category: "Gráficos / Tooling",
-    challenge: "Permitir prototipado, compilación en caliente y profiling interactivo de shaders gráficos directamente en el navegador con rendimiento nativo.",
-    solution: "Entorno WebGPU con analizador de sintaxis AST ligero para WGSL/GLSL, pipeline de render diferido multicapa y visor de rendimiento de búfer de fotogramas sin dependencias pesadas.",
-    technologies: ["WebGPU", "WGSL", "TypeScript", "Vite", "Tailwind CSS"],
-    metrics: [
-      { label: "Tasa de refresco", value: "60 FPS @ 4K" },
-      { label: "AST Parse time", value: "< 1.4 ms" },
-      { label: "Bundle Size", value: "< 42 KB gzip" }
-    ],
-    githubUrl: "https://github.com/Leonin04/webgpu-shaderforge",
-    demoUrl: "https://github.com/Leonin04/webgpu-shaderforge",
+    id: "irr-garten",
+    title: "IrrGarten",
+    category: "Implementación",
+    challenge: "Dominio de POO avanzada, patrones de diseño y polimorfismo manteniendo paridad en Java y Ruby.",
+    functionality: "Juego de laberinto y supervivencia con combate por turnos, ejecutable tanto en interfaz GUI como en CLI.",
+    technologies: ["Java", "Ruby", "Swing GUI", "CLI", "POO Avanzada", "Patrones de Diseño"],
+    githubUrl: "https://github.com/Leonin04/IrrGarten",
+    videoFolder: "IrrGarten",
     featured: true
   },
   {
-    id: "aegis-telemetry-agent",
-    title: "Aegis eBPF Agent",
-    category: "Infraestructura",
-    challenge: "Capturar métricas de red y trazabilidad de llamadas al sistema (syscalls) en contenedores Docker sin penalización perceptible en el rendimiento del host.",
-    solution: "Agente en Go acoplado a sondas eBPF cargadas en el kernel Linux para muestreo de paquetes a nivel de socket y exportación de métricas OpenTelemetry hacia Prometheus.",
-    technologies: ["Go", "eBPF (C)", "Docker", "Linux Kernel", "Prometheus"],
-    metrics: [
-      { label: "Overhead de CPU", value: "< 0.9%" },
-      { label: "Captura de eventos", value: "85K syscalls/s" },
-      { label: "Binario único", value: "14 MB estático" }
-    ],
-    githubUrl: "https://github.com/Leonin04/aegis-telemetry-agent",
-    demoUrl: "https://github.com/Leonin04/aegis-telemetry-agent",
+    id: "casino",
+    title: "Casino Online",
+    category: "Implementación",
+    challenge: "Arquitectura desacoplada, gestión segura del flujo de apuestas y sincronización cliente-servidor.",
+    functionality: "Casino online interactivo con vistas y paneles independientes para administradores y jugadores.",
+    technologies: ["React", "Vite", "Node.js", "API REST", "JavaScript", "Arquitectura Desacoplada"],
+    githubUrl: "https://github.com/LasanaTeam/Casino",
+    videoFolder: "Casino",
+    featured: true
+  },
+  {
+    id: "incidencias-molvizar",
+    title: "Incidencias Molvízar",
+    category: "Implementación",
+    challenge: "Arquitectura backend en PHP y motor de plantillas Twig con persistencia relacional en MySQL.",
+    functionality: "Portal ciudadano de reporte y seguimiento de incidencias con panel de gestión para el ayuntamiento.",
+    technologies: ["PHP", "Twig", "MySQL", "JavaScript", "HTML5/CSS3", "Gestión Municipal"],
+    githubUrl: "https://github.com/Leonin04/IncidenciasMolvizar",
+    videoFolder: "IncidenciasMolvizar",
     featured: true
   }
 ];
 
+
 export const SKILL_CATEGORIES: SkillCategory[] = [
   {
     title: "Lenguajes de Programación",
-    description: "Desarrollo en sistemas de tipos estáticos, bajo nivel y scripting de alto impacto.",
+    description: "Dominio de C++ en bajo nivel junto con lenguajes POO, scripting en Bash y web.",
     skills: [
-      { name: "C++ (17/20)", focus: "Gestión de memoria manual, RAII, plantillas, STL, multithreading" },
-      { name: "TypeScript", focus: "Tipado estricto, genéricos avanzados, AST, runtime validation" },
-      { name: "Python", focus: "Automatización, análisis de datos, tooling, profiling, asyncio" },
-      { name: "Go", focus: "Concurrencia con goroutines/channels, microservicios, eBPF" },
-      { name: "Rust", focus: "Ownership model, memoria segura, zero-cost abstractions" },
-      { name: "SQL", focus: "Optimización de consultas, índices, planes de ejecución" }
+      { name: "C++", focus: "Punteros, memoria dinámica, sobrecarga de operadores/funciones, STL y algoritmos" },
+      { name: "Java", focus: "Programación Orientada a Objetos sólida, herencia, interfaces, colecciones y sockets" },
+      { name: "Ruby", focus: "POO dinámica, scripts modulares y sintaxis expresiva" },
+      { name: "JavaScript", focus: "Frontend moderno, interacción con DOM, asincronía y Three.js" },
+      { name: "Bash / Shell", focus: "Scripts de automatización y manejo fluido de terminal Linux" },
+      { name: "PHP", focus: "Fundamentos de desarrollo web backend y manejo de servidores" }
     ]
   },
   {
-    title: "Backend & Arquitectura de Sistemas",
-    description: "Diseño de arquitecturas desacopladas, pipelines de datos y protocolos eficientes.",
+    title: "Algoritmia & Sistemas Distribuidos",
+    description: "Estructuras de datos avanzadas, diseño de algoritmos clásicos y coordinación en red.",
     skills: [
-      { name: "APIs & Protocolos", focus: "gRPC, Protocol Buffers, RESTful, WebSockets bidireccionales" },
-      { name: "Bases de Datos", focus: "PostgreSQL, SQLite, Redis (Caché & Pub/Sub), modelado relacional" },
-      { name: "Concurrencia", focus: "Modelos lock-free, pools de hilos, sincronización atómica" },
-      { name: "Event-Driven", focus: "Arquitectura basada en eventos, colas de mensajes, CRDTs" }
+      { name: "Algoritmos de Búsqueda", focus: "Dijkstra, A* (A-Star), heurísticas y optimización en grafos" },
+      { name: "Estructuras de Datos", focus: "Árboles binarios/AVL, vectores dinámicos, sets, maps y grafos en C++" },
+      { name: "Paradigmas Algorítmicos", focus: "Greedy (voraces), Divide y Vencerás, Backtracking y análisis de coste" },
+      { name: "Sistemas Distribuidos", focus: "Algoritmos de exclusión mutua, sincronización y sockets cliente-servidor" }
     ]
   },
   {
-    title: "Frontend & Web Engineering",
-    description: "Aplicaciones web de alto rendimiento, interfaces accesibles y tooling moderno.",
+    title: "Ingeniería del Software & Web",
+    description: "Modelado formal de requisitos, visualización 3D y desarrollo de videojuegos.",
     skills: [
-      { name: "React 18+", focus: "Hooks avanzados, Server Components concepts, Concurrent Mode" },
-      { name: "Vite & Tooling", focus: "Bundlers ESM, optimización de assets, Tree-shaking, Rollup" },
-      { name: "Tailwind CSS", focus: "Sistemas de diseño atómicos, Dark Mode nativo, CSS Grid/Flex" },
-      { name: "APIs Web Nativas", focus: "Web Workers, WebSockets, Canvas 2D/WebGPU, Fetch API" }
+      { name: "Three.js & Gráficos", focus: "Renderizado y manipulación de entornos 3D interactivos en WebGL" },
+      { name: "HTML5 & CSS3", focus: "Estructuración semántica, maquetación y diseño web responsive" },
+      { name: "Ingeniería del Software", focus: "Documentación previa, diagramas UML, casos de uso y diseño POO" },
+      { name: "Godot Engine", focus: "Desarrollo básico de videojuegos, árboles de nodos y escenas interactivas" }
     ]
   },
   {
-    title: "Infraestructura & DevOps",
-    description: "Entornos reproducibles, integración continua y observabilidad de sistemas.",
+    title: "Administración de Empresas & ADE",
+    description: "Competencias analíticas, financieras, económicas y soft-skills adquiridas en ADE.",
     skills: [
-      { name: "Docker & Containers", focus: "Multi-stage builds, imágenes scratch mínimas, aislamiento" },
-      { name: "Linux / POSIX", focus: "Bash scripting, gestión de procesos, sockets Unix, systemd" },
-      { name: "CI/CD & Git", focus: "GitHub Actions workflows, testing automatizado, deployment estático" },
-      { name: "Observabilidad", focus: "Prometheus, Grafana, OpenTelemetry, profiling de CPU y memoria" }
+      { name: "Análisis de Estados Financieros", focus: "Lectura e interpretación de balance de situación y cuentas de PyG" },
+      { name: "Operaciones Financieras", focus: "Cálculo de rentabilidades, flujos financieros y valoración de proyectos" },
+      { name: "Micro & Macroeconomía", focus: "Estructura de mercados, funcionamiento empresarial y variables macro" },
+      { name: "Trabajo en Equipo & Soft Skills", focus: "Liderazgo, adaptabilidad internacional (Erasmus Tailandia) y comunicación" }
     ]
   }
 ];
 
 export const CV_DATA = {
-  name: "David Bacas",
-  title: "Software Engineer | Systems & Full-Stack",
-  summary: "Ingeniero de software con sólida base en desarrollo de sistemas de alto rendimiento, aplicaciones web concurrentes y arquitecturas escalables. Apasionado por la optimización de recursos, código mantenible y soluciones elegantes a problemas complejos de ingeniería.",
+  name: "David Bacas Posadas",
+  title: "Doble Grado en Ingeniería Informática y ADE | 5º Curso - UGR",
+  summary: "Estudiante de 5º curso del Doble Grado en Ingeniería Informática y ADE en la Universidad de Granada (UGR), cursando la mención en Ingeniería del Software. Apasionado por la tecnología, orientado a la creación de software que aporte valor real a los usuarios y habituado al desarrollo de proyectos independientes y aprendizaje continuo. Combino rigor en arquitectura técnica y desarrollo con capacidad de análisis financiero, gestión empresarial y trabajo en equipo.",
   experience: [
     {
-      role: "Lead Software & Systems Engineer",
-      company: "Tech Systems Lab",
-      period: "2023 - Presente",
-      description: "Diseño e implementación de subsistemas de alta frecuencia y baja latencia en C++ y Go. Optimización de cuellos de botella en procesamiento concurrente reduciendo la latencia p99 en un 40%."
+      role: "Ingeniería del Software & Proyectos Independientes",
+      company: "Desarrollo de Software & Prototipado",
+      period: "Actualidad",
+      description: "Desarrollo de proyectos independientes explorando gráficos interactivos en el navegador, videojuegos modulares y aplicaciones orientadas al usuario final. Aprendizaje continuo de nuevas tecnologías y enfoques de arquitectura."
     },
     {
-      role: "Senior Full-Stack Engineer",
-      company: "Distributed Cloud Solutions",
-      period: "2021 - 2023",
-      description: "Desarrollo de paneles analíticos en tiempo real con React 18, TypeScript y WebSockets. Arquitectura de servicios backend en Node.js y Redis soportando más de 10k conexiones activas."
+      role: "Sistemas Distribuidos & Concurrencia",
+      company: "Arquitectura & Sincronización en Red",
+      period: "Especialización Técnica",
+      description: "Diseño e implementación de arquitecturas distribuidas, coordinación multi-servidor mediante protocolos de red, exclusión mutua y programación orientada a objetos."
+    },
+    {
+      role: "Estructuras de Datos & Algoritmia Avanzada",
+      company: "Optimización & Computación",
+      period: "Fundamentos Técnicos",
+      description: "Diseño e implementación de estructuras de datos no lineales, optimización de trayectorias en redes complejas, paradigmas algorítmicos avanzados y análisis de eficiencia computacional."
+    },
+    {
+      role: "Fundamentos de Ingeniería & Gestión de Sistemas",
+      company: "Ingeniería de Sistemas & Linux",
+      period: "Base Tecnológica",
+      description: "Gestión estricta de memoria, desarrollo modular de bajo nivel, automatización de tareas en entornos Linux y modelado de lógica computacional."
     }
   ],
   education: [
     {
-      degree: "Grado en Ingeniería Informática / Software Engineering",
-      institution: "Universidad Técnica",
-      year: "2017 - 2021"
+      degree: "Doble Grado en Ingeniería Informática y Administración y Dirección de Empresas (ADE)",
+      institution: "Universidad de Granada (UGR), España",
+      year: "5º Curso Activo"
+    },
+    {
+      degree: "Mención en Ingeniería del Software",
+      institution: "Universidad de Granada (UGR)",
+      year: "En curso"
     }
   ]
 };
+
+

@@ -10,17 +10,43 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCv }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLinks = [
+    { name: 'INICIO', href: '#inicio' },
     { name: 'PROYECTOS', href: '#proyectos' },
     { name: 'STACK TÉCNICO', href: '#skills' },
-    { name: 'SOBRE MÍ', href: '#sobre-mi' },
+    { name: 'MÁS SOBRE MÍ', href: '#sobre-mi' },
   ];
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    setMobileMenuOpen(false);
+    const targetId = href.replace('#', '');
+    const element = document.getElementById(targetId);
+    if (element) {
+      if (targetId === 'inicio') {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth',
+        });
+      } else {
+        const header = document.querySelector('header');
+        const headerHeight = header ? header.offsetHeight : 56;
+        const elementTop = element.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({
+          top: Math.round(elementTop - headerHeight),
+          behavior: 'smooth',
+        });
+      }
+      window.history.pushState(null, '', href);
+    }
+  };
+
   return (
-    <header className="sticky top-0 z-50 bg-retro-surface/95 backdrop-blur-sm border-b-4 border-retro-border">
-      <div className="max-w-6xl mx-auto px-4 py-2.5 flex items-center justify-between">
+    <header className="sticky top-0 z-50 h-[56px] bg-retro-surface/95 backdrop-blur-sm border-b-4 border-retro-border flex items-center">
+      <div className="max-w-6xl w-full mx-auto px-4 flex items-center justify-between">
         {/* Monogram / Logo */}
         <a
-          href="#"
+          href="#inicio"
+          onClick={(e) => handleNavClick(e, '#inicio')}
           className="flex items-center gap-2 group text-retro-ink font-pixel text-xs tracking-wider"
         >
           <span className="inline-block p-1 bg-retro-greenPastel text-retro-ink font-pixel text-[10px] leading-none border-2 border-retro-border">
@@ -40,6 +66,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCv }) => {
             <a
               key={link.name}
               href={link.href}
+              onClick={(e) => handleNavClick(e, link.href)}
               className="text-retro-inkMuted hover:text-retro-green hover:underline decoration-2 underline-offset-4 transition-colors"
             >
               {link.name}
@@ -93,7 +120,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCv }) => {
             <a
               key={link.name}
               href={link.href}
-              onClick={() => setMobileMenuOpen(false)}
+              onClick={(e) => handleNavClick(e, link.href)}
               className="block py-2 text-retro-inkMuted hover:text-retro-green"
             >
               &gt; {link.name}

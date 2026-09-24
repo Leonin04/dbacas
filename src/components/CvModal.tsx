@@ -140,7 +140,7 @@ export const CvModal: React.FC<CvModalProps> = ({ isOpen, onClose }) => {
 
         {/* Modal Footer */}
         <div className="px-5 py-3 bg-retro-surface border-t-4 border-retro-border flex items-center justify-between font-pixel text-[10px] text-retro-inkMuted">
-          <span>{PERSONAL_INFO.handle} // MADRID</span>
+          <span>{PERSONAL_INFO.handle} // UGR (GRANADA)</span>
           <button
             onClick={onClose}
             className="pixel-btn px-3 py-1 bg-retro-panel text-retro-ink hover:bg-retro-surface"

@@ -1,16 +1,19 @@
 export interface Project {
   id: string;
   title: string;
-  category: 'Sistemas' | 'Full-Stack' | 'Gráficos / Tooling' | 'Infraestructura';
+  category: string;
   challenge: string;
-  solution: string;
+  functionality?: string;
+  solution?: string;
   technologies: string[];
-  metrics: {
+  metrics?: {
     label: string;
     value: string;
   }[];
   githubUrl: string;
   demoUrl?: string;
+  videoFolder?: string;
+  videoUrl?: string;
   featured?: boolean;
 }
 

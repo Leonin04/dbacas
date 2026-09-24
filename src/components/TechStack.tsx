@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Code2, Server, Globe, Cpu, ChevronRight, Sparkles, HardDrive } from 'lucide-react';
+import { Code2, Server, Globe, TrendingUp, ChevronRight, Sparkles, HardDrive } from 'lucide-react';
 import { SKILL_CATEGORIES } from '../data/portfolioData';
 
 interface CartridgeInfo {
@@ -19,9 +19,9 @@ interface CartridgeInfo {
 const CARTRIDGE_CONFIG: CartridgeInfo[] = [
   {
     id: 0,
-    shortTitle: "LENGUAJES",
+    shortTitle: "LENGUAJES CORE",
     romCode: "ROM-01",
-    subtitle: "Bajo nivel & Compilados",
+    subtitle: "C++, Java, Ruby, Bash",
     accentColor: "#4A7C59",
     bgClass: "bg-[#E2EFE4]",
     labelBgClass: "bg-[#9EC5A6]",
@@ -32,9 +32,9 @@ const CARTRIDGE_CONFIG: CartridgeInfo[] = [
   },
   {
     id: 1,
-    shortTitle: "BACKEND & SISTEMAS",
+    shortTitle: "ALGORITMOS & SISTEMAS",
     romCode: "ROM-02",
-    subtitle: "Concurrencia & Datos",
+    subtitle: "Grafos, Distribuidos, C++",
     accentColor: "#3E7596",
     bgClass: "bg-[#E0EEF5]",
     labelBgClass: "bg-[#9EC4D7]",
@@ -45,9 +45,9 @@ const CARTRIDGE_CONFIG: CartridgeInfo[] = [
   },
   {
     id: 2,
-    shortTitle: "FRONTEND & WEB",
+    shortTitle: "SOFTWARE & WEB",
     romCode: "ROM-03",
-    subtitle: "React & Tooling Moderno",
+    subtitle: "Three.js, UML, Godot",
     accentColor: "#A8731F",
     bgClass: "bg-[#FCF3DC]",
     labelBgClass: "bg-[#EFC777]",
@@ -58,39 +58,39 @@ const CARTRIDGE_CONFIG: CartridgeInfo[] = [
   },
   {
     id: 3,
-    shortTitle: "INFRAESTRUCTURA",
+    shortTitle: "GESTIÓN & ADE",
     romCode: "ROM-04",
-    subtitle: "Linux, CI/CD & eBPF",
+    subtitle: "Finanzas, Economía, Negocio",
     accentColor: "#B84C3C",
     bgClass: "bg-[#FAE3DF]",
     labelBgClass: "bg-[#E89C90]",
     borderClass: "border-[#9C3E30]",
     textClass: "text-[#571C13]",
-    icon: Cpu,
+    icon: TrendingUp,
     chipCount: "4 TECS",
   },
 ];
 
 // Individual skill tags and badges
 const SKILL_DETAILS: Record<string, { tag: string; level: string; colorClass: string }> = {
-  "C++ (17/20)": { tag: "SYS_CORE", level: "EXPERTO", colorClass: "bg-[#E6DEF8] text-[#2C1F5A] border-[#6754A8]" },
-  "TypeScript": { tag: "STRICT_TYPES", level: "SENIOR", colorClass: "bg-[#D6EEFC] text-[#143B5E] border-[#3A80B8]" },
-  "Python": { tag: "AUTOMATION", level: "AVANZADO", colorClass: "bg-[#FCF2CE] text-[#543F08] border-[#B08920]" },
-  "Go": { tag: "CONCURRENCY", level: "SENIOR", colorClass: "bg-[#D2F5EE] text-[#10473E] border-[#328F7F]" },
-  "Rust": { tag: "ZERO_COPY", level: "AVANZADO", colorClass: "bg-[#FCE1D2] text-[#5A280D] border-[#BD6434]" },
-  "SQL": { tag: "DATA_QUERY", level: "SENIOR", colorClass: "bg-[#D7F5E2] text-[#134725] border-[#3B9258]" },
-  "APIs & Protocolos": { tag: "NETWORKING", level: "ESPECIALISTA", colorClass: "bg-[#D2F5F0] text-[#114945] border-[#2F938C]" },
-  "Bases de Datos": { tag: "PERSISTENCE", level: "SENIOR", colorClass: "bg-[#F7DCF0] text-[#521C45] border-[#A34E8F]" },
-  "Concurrencia": { tag: "LOCK_FREE", level: "EXPERTO", colorClass: "bg-[#FCECC4] text-[#593C08] border-[#B88220]" },
-  "Event-Driven": { tag: "STREAMING", level: "SENIOR", colorClass: "bg-[#FDE1DC] text-[#5E2015] border-[#BD5442]" },
-  "React 18+": { tag: "UI_FRAMEWORK", level: "SENIOR", colorClass: "bg-[#D5EFFF] text-[#123E5A] border-[#3387B8]" },
-  "Vite & Tooling": { tag: "BUNDLER", level: "EXPERTO", colorClass: "bg-[#EDDEF9] text-[#3E1B64] border-[#8050B8]" },
-  "Tailwind CSS": { tag: "DESIGN_SYS", level: "EXPERTO", colorClass: "bg-[#D8F6F0] text-[#124940] border-[#349484]" },
-  "APIs Web Nativas": { tag: "WEB_STANDARDS", level: "AVANZADO", colorClass: "bg-[#FDE5D8] text-[#5C270E] border-[#BD6338]" },
-  "Docker & Containers": { tag: "CONTAINERS", level: "SENIOR", colorClass: "bg-[#D8EAFD] text-[#163863] border-[#3876BF]" },
-  "Linux / POSIX": { tag: "KERNEL_OPS", level: "EXPERTO", colorClass: "bg-[#FCF5C8] text-[#544309] border-[#AD8F1E]" },
-  "CI/CD & Git": { tag: "AUTOMATION", level: "SENIOR", colorClass: "bg-[#FDE2CF] text-[#5E2B0C] border-[#BF612A]" },
-  "Observabilidad": { tag: "TELEMETRY", level: "SENIOR", colorClass: "bg-[#D8F6E4] text-[#144726] border-[#379459]" },
+  "C++": { tag: "PUNTEROS_MEMORIA", level: "DOMINIO", colorClass: "bg-[#E6DEF8] text-[#2C1F5A] border-[#6754A8]" },
+  "Java": { tag: "POO_ENTERPRISE", level: "MEDIO-ALTO", colorClass: "bg-[#D6EEFC] text-[#143B5E] border-[#3A80B8]" },
+  "Ruby": { tag: "DYNAMIC_OOP", level: "MEDIO", colorClass: "bg-[#FAE3DF] text-[#5E2015] border-[#BD5442]" },
+  "JavaScript": { tag: "WEB_FRONTEND", level: "COMPETENTE", colorClass: "bg-[#FCF2CE] text-[#543F08] border-[#B08920]" },
+  "Bash / Shell": { tag: "LINUX_OPS", level: "SOLTURA", colorClass: "bg-[#D7F5E2] text-[#134725] border-[#3B9258]" },
+  "PHP": { tag: "BACKEND_WEB", level: "BÁSICO", colorClass: "bg-[#EDDEF9] text-[#3E1B64] border-[#8050B8]" },
+  "Algoritmos de Búsqueda": { tag: "DIJKSTRA_A*", level: "AVANZADO", colorClass: "bg-[#D2F5EE] text-[#10473E] border-[#328F7F]" },
+  "Estructuras de Datos": { tag: "ÁRBOLES_VECTORES", level: "DOMINIO", colorClass: "bg-[#D2F5F0] text-[#114945] border-[#2F938C]" },
+  "Paradigmas Algorítmicos": { tag: "GREEDY_D&C", level: "AVANZADO", colorClass: "bg-[#FCECC4] text-[#593C08] border-[#B88220]" },
+  "Sistemas Distribuidos": { tag: "EXCLUSIÓN_MUTUA", level: "AVANZADO", colorClass: "bg-[#D8EAFD] text-[#163863] border-[#3876BF]" },
+  "Three.js & Gráficos": { tag: "3D_WEBGL", level: "COMPETENTE", colorClass: "bg-[#D5EFFF] text-[#123E5A] border-[#3387B8]" },
+  "HTML5 & CSS3": { tag: "WEB_STANDARDS", level: "AVANZADO", colorClass: "bg-[#D8F6F0] text-[#124940] border-[#349484]" },
+  "Ingeniería del Software": { tag: "UML_REQUISITOS", level: "AVANZADO", colorClass: "bg-[#FCF5C8] text-[#544309] border-[#AD8F1E]" },
+  "Godot Engine": { tag: "NODES_LOGIC", level: "BÁSICO", colorClass: "bg-[#FDE2CF] text-[#5E2B0C] border-[#BF612A]" },
+  "Análisis de Estados Financieros": { tag: "BALANCES_PyG", level: "AVANZADO", colorClass: "bg-[#F7DCF0] text-[#521C45] border-[#A34E8F]" },
+  "Operaciones Financieras": { tag: "VALORACIÓN_FLUJOS", level: "AVANZADO", colorClass: "bg-[#FDE5D8] text-[#5C270E] border-[#BD6338]" },
+  "Micro & Macroeconomía": { tag: "MERCADOS_EMPRESA", level: "SÓLIDO", colorClass: "bg-[#FCF2CE] text-[#543F08] border-[#B08920]" },
+  "Trabajo en Equipo & Soft Skills": { tag: "ERASMUS_THAILAND", level: "EXPERIENCIA", colorClass: "bg-[#D8F6E4] text-[#144726] border-[#379459]" },
 };
 
 export const TechStack: React.FC = () => {
@@ -103,9 +103,9 @@ export const TechStack: React.FC = () => {
   return (
     <section
       id="skills"
-      className="relative min-h-[calc(100vh-54px)] flex flex-col justify-center py-4 sm:py-6 border-b-4 border-retro-border bg-retro-bg overflow-hidden"
+      className="relative h-[calc(100vh-56px)] max-h-[calc(100vh-56px)] snap-start flex flex-col justify-between py-3 sm:py-4 border-b-4 border-retro-border bg-retro-bg overflow-hidden"
     >
-      <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 flex flex-col justify-between flex-1">
+      <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 flex flex-col justify-between h-full">
         {/* Section Header - Compact */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-2.5 mb-2.5">
           <div>
