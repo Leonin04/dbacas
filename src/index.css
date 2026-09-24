@@ -4,17 +4,18 @@
 
 @layer base {
   :root {
-    color-scheme: dark;
+    color-scheme: light;
   }
 
   html {
     scroll-behavior: smooth;
-    background-color: #0a0a0f;
-    color: #e2e8f0;
+    background-color: #F6F0E6;
+    color: #2C221E;
   }
 
   body {
-    background-color: #0a0a0f;
+    background-color: #F6F0E6;
+    color: #2C221E;
     font-family: 'VT323', monospace;
     font-size: 18px;
     letter-spacing: 0.5px;
@@ -27,65 +28,71 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: #0a0a0f;
-    border-left: 2px solid #2e3046;
+    background: #EDE4D4;
+    border-left: 2px solid #2C221E;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #00ff66;
-    border: 2px solid #000;
+    background: #9EC5A6;
+    border: 2px solid #2C221E;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #ffe600;
+    background: #EFC777;
   }
 }
 
 @layer utilities {
-  /* Subtle CRT Scanlines */
+  /* Subtle CRT Scanlines for retro consoles */
   .crt-scanlines {
     background: linear-gradient(
-      rgba(18, 16, 16, 0) 50%, 
-      rgba(0, 0, 0, 0.35) 50%
+      rgba(246, 240, 230, 0.04) 50%, 
+      rgba(37, 30, 26, 0.28) 50%
     );
     background-size: 100% 4px;
     pointer-events: none;
   }
 
+  /* Subtle 8-bit dot background */
+  .bg-grid {
+    background-image: radial-gradient(#D6CABA 1.5px, transparent 1.5px);
+    background-size: 24px 24px;
+  }
+
   /* Pixel borders */
   .pixel-box {
-    border: 3px solid #2e3046;
-    box-shadow: 4px 4px 0px #000000;
+    border: 3px solid #2C221E;
+    box-shadow: 4px 4px 0px #2C221E;
   }
 
   .pixel-box-green {
-    border: 3px solid #00ff66;
-    box-shadow: 4px 4px 0px #000000;
+    border: 3px solid #4A7C59;
+    box-shadow: 4px 4px 0px #2C221E;
   }
 
   .pixel-box-yellow {
-    border: 3px solid #ffe600;
-    box-shadow: 4px 4px 0px #000000;
+    border: 3px solid #A8731F;
+    box-shadow: 4px 4px 0px #2C221E;
   }
 
   .pixel-box-cyan {
-    border: 3px solid #00f0ff;
-    box-shadow: 4px 4px 0px #000000;
+    border: 3px solid #3E7596;
+    box-shadow: 4px 4px 0px #2C221E;
   }
 
   /* Pixel button with press effect */
   .pixel-btn {
-    border: 2px solid #000;
-    box-shadow: 3px 3px 0px #000;
+    border: 2px solid #2C221E;
+    box-shadow: 3px 3px 0px #2C221E;
     transition: transform 0.05s ease, box-shadow 0.05s ease;
   }
 
   .pixel-btn:hover {
-    filter: brightness(1.1);
+    filter: brightness(0.96);
   }
 
   .pixel-btn:active {
     transform: translate(2px, 2px);
-    box-shadow: 1px 1px 0px #000;
+    box-shadow: 1px 1px 0px #2C221E;
   }
 }

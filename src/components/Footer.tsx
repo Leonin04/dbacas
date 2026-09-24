@@ -8,24 +8,24 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="border-t-4 border-black bg-[#0a0a0f] py-8 text-zinc-400 font-pixel text-[10px]">
+    <footer className="border-t-4 border-retro-border bg-retro-surface py-8 text-retro-inkMuted font-pixel text-[10px]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-6 pb-6 border-b-2 border-zinc-800">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-6 pb-6 border-b-2 border-retro-border">
           {/* Identity */}
-          <div className="flex items-center gap-2 text-white">
-            <span className="text-retro-green">&gt;</span>
+          <div className="flex items-center gap-2 text-retro-ink">
+            <span className="text-retro-green font-bold">&gt;</span>
             <span className="font-bold">{PERSONAL_INFO.handle}</span>
-            <span className="text-zinc-600">/</span>
-            <span className="text-zinc-400">{PERSONAL_INFO.name}</span>
+            <span className="text-retro-borderMuted">/</span>
+            <span className="text-retro-inkMuted">{PERSONAL_INFO.name}</span>
           </div>
 
           {/* Social Links */}
-          <div className="flex items-center gap-5">
+          <div className="flex items-center gap-5 font-bold">
             <a
               href={PERSONAL_INFO.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-retro-green flex items-center gap-1.5 transition-colors"
+              className="text-retro-ink hover:text-retro-green flex items-center gap-1.5 transition-colors"
             >
               <Github className="w-3.5 h-3.5" />
               <span>GITHUB</span>
@@ -35,7 +35,7 @@ export const Footer: React.FC = () => {
               href={PERSONAL_INFO.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-retro-cyan flex items-center gap-1.5 transition-colors"
+              className="text-retro-ink hover:text-retro-cyan flex items-center gap-1.5 transition-colors"
             >
               <Linkedin className="w-3.5 h-3.5" />
               <span>LINKEDIN</span>
@@ -43,7 +43,7 @@ export const Footer: React.FC = () => {
 
             <a
               href={`mailto:${PERSONAL_INFO.email}`}
-              className="hover:text-retro-yellow flex items-center gap-1.5 transition-colors"
+              className="text-retro-ink hover:text-retro-yellow flex items-center gap-1.5 transition-colors"
             >
               <Mail className="w-3.5 h-3.5" />
               <span>EMAIL</span>
@@ -53,7 +53,7 @@ export const Footer: React.FC = () => {
           {/* Return to top */}
           <button
             onClick={scrollToTop}
-            className="pixel-btn px-2.5 py-1 bg-retro-panel text-zinc-300 hover:text-white flex items-center gap-1"
+            className="pixel-btn px-2.5 py-1 bg-retro-panel text-retro-ink hover:bg-retro-greenPastel flex items-center gap-1"
             aria-label="Volver arriba"
           >
             <span>TOP</span>
@@ -62,7 +62,7 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Bottom */}
-        <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-zinc-600 text-[9px]">
+        <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-retro-inkLight text-[9px]">
           <div>
             (C) {new Date().getFullYear()} {PERSONAL_INFO.name}. TODOS LOS DERECHOS RESERVADOS.
           </div>

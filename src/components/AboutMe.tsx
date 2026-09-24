@@ -26,38 +26,38 @@ export const AboutMe: React.FC<AboutMeProps> = ({ onOpenCv }) => {
   ];
 
   return (
-    <section id="sobre-mi" className="py-16 md:py-20 border-b-4 border-black bg-[#0a0a0f] relative">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+    <section id="sobre-mi" className="relative min-h-[calc(100vh-54px)] flex flex-col justify-center py-8 sm:py-12 border-b-4 border-retro-border bg-retro-bg">
+      <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10">
         {/* Section Header */}
         <div className="mb-10">
-          <div className="text-retro-cyan font-pixel text-xs mb-2">
-            [STAGE 04] :: PERFIL &amp; FILOSOFÍA TÉCNICA
+          <div className="text-retro-cyan font-pixel text-xs mb-2 font-bold">
+            [STAGE 03] :: PERFIL &amp; FILOSOFÍA TÉCNICA
           </div>
-          <h2 className="font-pixel text-xl sm:text-3xl text-white">
+          <h2 className="font-pixel text-xl sm:text-3xl text-retro-ink">
             SOBRE MÍ
           </h2>
-          <p className="font-arcade text-xl text-zinc-400 mt-2 max-w-xl">
+          <p className="font-arcade text-xl text-retro-inkMuted mt-2 max-w-xl">
             Enfoque de ingeniería pragmático: resolver cuellos de botella con fundamentos sólidos.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Main Bio Box */}
-          <div className="lg:col-span-7 bg-retro-panel pixel-box p-6 sm:p-8 space-y-4 font-arcade text-xl sm:text-2xl text-zinc-300 leading-relaxed">
+          <div className="lg:col-span-7 bg-retro-panel pixel-box p-6 sm:p-8 space-y-4 font-arcade text-xl sm:text-2xl text-retro-ink leading-relaxed">
             <p>
-              Soy <strong className="text-white font-pixel text-base">{PERSONAL_INFO.name}</strong> (<span className="text-retro-green font-pixel text-xs">@{PERSONAL_INFO.handle}</span>). Trabajo en la intersección entre sistemas de alto rendimiento y aplicaciones web escalables.
+              Soy <strong className="text-retro-ink font-pixel text-base">{PERSONAL_INFO.name}</strong> (<span className="text-retro-green font-pixel text-xs font-bold">@{PERSONAL_INFO.handle}</span>). Trabajo en la intersección entre sistemas de alto rendimiento y aplicaciones web escalables.
             </p>
             <p>
-              Experiencia diseñando subsistemas en <strong className="text-white">C++</strong> y <strong className="text-white">Go</strong> donde el uso de memoria y la concurrencia exigen control absoluto, combinada con interfaces web sólidas en <strong className="text-white">TypeScript</strong> y <strong className="text-white">React</strong>.
+              Experiencia diseñando subsistemas en <strong className="text-retro-ink font-bold">C++</strong> y <strong className="text-retro-ink font-bold">Go</strong> donde el uso de memoria y la concurrencia exigen control absoluto, combinada con interfaces web sólidas en <strong className="text-retro-ink font-bold">TypeScript</strong> y <strong className="text-retro-ink font-bold">React</strong>.
             </p>
-            <p className="text-zinc-400">
+            <p className="text-retro-inkMuted">
               Mi filosofía es simple: menos capas de abstracción innecesarias, mayor visibilidad sobre las llamadas al sistema operativo y pruebas deterministas.
             </p>
 
-            <div className="pt-4 border-t-2 border-black flex items-center gap-4">
+            <div className="pt-4 border-t-2 border-retro-border flex items-center gap-4">
               <button
                 onClick={onOpenCv}
-                className="pixel-btn px-4 py-2.5 bg-retro-green text-black font-pixel text-xs flex items-center gap-2"
+                className="pixel-btn px-4 py-2.5 bg-retro-greenPastel hover:bg-retro-greenLight text-retro-ink font-pixel text-xs flex items-center gap-2 transition-colors"
               >
                 <FileText className="w-4 h-4" />
                 <span>CONSULTAR CV COMPLETO</span>
@@ -73,14 +73,14 @@ export const AboutMe: React.FC<AboutMeProps> = ({ onOpenCv }) => {
                 className="bg-retro-panel pixel-box p-5 space-y-2"
               >
                 <div className="flex items-center gap-2">
-                  <span className="p-1 bg-black border border-zinc-700">
+                  <span className="p-1 bg-retro-surface border border-retro-border">
                     {p.icon}
                   </span>
-                  <h3 className="font-pixel text-xs text-white">
+                  <h3 className="font-pixel text-xs text-retro-ink font-bold">
                     {p.title}
                   </h3>
                 </div>
-                <p className="font-arcade text-lg text-zinc-400 leading-normal">
+                <p className="font-arcade text-lg text-retro-inkMuted leading-normal">
                   {p.description}
                 </p>
               </div>
