@@ -41,8 +41,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCv }) => {
   };
 
   return (
-    <header className="sticky top-0 z-50 h-[56px] bg-retro-surface/95 backdrop-blur-sm border-b-4 border-retro-border flex items-center">
-      <div className="max-w-6xl w-full mx-auto px-4 flex items-center justify-between">
+    <header className="sticky top-0 z-50 bg-retro-surface/95 backdrop-blur-sm border-b-4 border-retro-border">
+      <div className="max-w-6xl w-full mx-auto px-4 h-14 flex items-center justify-between relative">
         {/* Monogram / Logo */}
         <a
           href="#inicio"
@@ -99,13 +99,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCv }) => {
         <div className="flex md:hidden items-center gap-2">
           <button
             onClick={onOpenCv}
-            className="pixel-btn px-2 py-1 bg-retro-panel text-retro-yellow font-pixel text-[9px]"
+            className="pixel-btn px-2.5 py-1 bg-retro-panel text-retro-yellow font-pixel text-[9px] font-bold"
           >
             CV
           </button>
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-1 border-2 border-retro-border bg-retro-panel text-retro-ink"
+            className="p-1.5 border-2 border-retro-border bg-retro-panel text-retro-ink pixel-btn"
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
@@ -113,28 +113,36 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCv }) => {
         </div>
       </div>
 
-      {/* Mobile Menu Dropdown */}
+      {/* Mobile Menu Dropdown (Absolute overlay) */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-retro-surface border-b-4 border-retro-border px-4 py-3 space-y-2 font-pixel text-[10px]">
+        <div className="md:hidden absolute top-14 left-0 right-0 bg-retro-surface border-b-4 border-retro-border px-5 py-4 space-y-3 font-pixel text-xs shadow-[0px_4px_0px_#2C221E] z-50">
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
               onClick={(e) => handleNavClick(e, link.href)}
-              className="block py-2 text-retro-inkMuted hover:text-retro-green"
+              className="block py-2 text-retro-ink hover:text-retro-green transition-colors border-b border-retro-border/20 last:border-b-0"
             >
               &gt; {link.name}
             </a>
           ))}
-          <div className="pt-2 border-t-2 border-retro-border flex items-center justify-between">
+          <div className="pt-2 border-t-2 border-retro-border flex items-center justify-between text-[10px]">
             <a
               href={PERSONAL_INFO.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-retro-green flex items-center gap-1 text-[10px]"
+              className="text-retro-green font-bold flex items-center gap-1.5"
             >
-              <Github className="w-3 h-3" />
-              <span>GITHUB: {PERSONAL_INFO.handle}</span>
+              <Github className="w-3.5 h-3.5" />
+              <span>GITHUB</span>
+            </a>
+            <a
+              href={PERSONAL_INFO.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-retro-cyan font-bold flex items-center gap-1.5"
+            >
+              <span>LINKEDIN &gt;</span>
             </a>
           </div>
         </div>

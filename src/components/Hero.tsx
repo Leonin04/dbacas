@@ -7,16 +7,16 @@ export const Hero: React.FC = () => {
   return (
     <section
       id="inicio"
-      className="relative h-[calc(100vh-56px)] max-h-[calc(100vh-56px)] snap-start flex flex-col justify-between py-3 sm:py-4 lg:py-5 border-b-4 border-retro-border bg-retro-bg overflow-hidden"
+      className="relative min-h-[calc(100vh-56px)] snap-start flex flex-col justify-center py-4 sm:py-6 lg:py-5 border-b-4 border-retro-border bg-retro-bg"
     >
-      <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 flex flex-col justify-between h-full">
+      <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 flex flex-col justify-between">
         {/* Retro HUD Status Bar */}
-        <div className="flex flex-wrap items-center justify-between gap-2 p-2.5 sm:p-3 mb-2.5 sm:mb-3 bg-retro-surface pixel-box font-pixel text-[10px] sm:text-xs text-retro-inkMuted shrink-0">
-          <div className="flex items-center gap-2.5">
-            <span className="w-2.5 h-2.5 bg-retro-greenPastel animate-pulse inline-block border border-retro-border" />
+        <div className="flex flex-wrap items-center justify-between gap-2 p-2 sm:p-2.5 mb-3 bg-retro-surface pixel-box font-pixel text-[8px] sm:text-[10px] lg:text-xs text-retro-inkMuted shrink-0">
+          <div className="flex items-center gap-2">
+            <span className="w-2 h-2 bg-retro-greenPastel animate-pulse inline-block border border-retro-border" />
             <span className="text-retro-green font-bold">STATUS: 5TO_CURSO_ACTIVO</span>
           </div>
-          <div className="flex items-center gap-4 sm:gap-6 text-retro-inkMuted">
+          <div className="flex flex-wrap items-center gap-3 sm:gap-4 lg:gap-6 text-retro-inkMuted">
             <span className="text-retro-ink font-bold">GRADO: INF + ADE</span>
             <span className="text-retro-yellow font-bold">UNIV: UGR (GRANADA)</span>
             <span className="text-retro-cyan font-bold">MENCIÓN: ING_SOFTWARE</span>
@@ -24,72 +24,72 @@ export const Hero: React.FC = () => {
         </div>
 
         {/* Main Hero Card with Pixel Art Aesthetic */}
-        <div className="flex-1 p-5 sm:p-7 lg:p-9 bg-retro-panel pixel-box relative flex flex-col justify-between overflow-hidden">
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-10 h-full">
+        <div className="p-4 sm:p-6 lg:p-7 xl:p-8 bg-retro-panel pixel-box relative">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-8 xl:gap-12">
             {/* Left Column: Bio & Info */}
-            <div className="flex-1 max-w-3xl flex flex-col justify-between h-full py-1">
+            <div className="flex-1 max-w-2xl xl:max-w-3xl flex flex-col justify-center gap-3 sm:gap-4 w-full">
               <div>
                 {/* Tag / Role */}
-                <div className="inline-block px-3.5 py-1.5 mb-2.5 sm:mb-3 bg-retro-surface border-2 border-retro-border text-retro-green font-pixel text-xs sm:text-sm font-bold shadow-[2px_2px_0px_#2C221E]">
+                <div className="inline-block px-3 py-1 mb-2 bg-retro-surface border-2 border-retro-border text-retro-green font-pixel text-[10px] sm:text-xs font-bold shadow-[2px_2px_0px_#2C221E]">
                   &gt; DOBLE_GRADO::INGENIERÍA_INFORMÁTICA_Y_ADE::UGR
                 </div>
 
                 {/* Name / Title */}
-                <h1 className="font-pixel text-2xl sm:text-3xl lg:text-4xl text-retro-ink tracking-wide leading-tight">
+                <h1 className="font-pixel text-xl sm:text-3xl lg:text-4xl text-retro-ink tracking-wide leading-tight">
                   {PERSONAL_INFO.name}
                 </h1>
 
-                <div className="font-pixel text-sm sm:text-base text-retro-yellow mt-2 flex items-center gap-2 font-bold">
+                <div className="font-pixel text-xs sm:text-sm text-retro-yellow mt-1.5 flex items-center gap-2 font-bold">
                   <span>ALIAS:</span>
                   <span className="text-retro-cyan">@{PERSONAL_INFO.handle}</span>
                 </div>
 
                 {/* Direct Technical Subtext */}
-                <p className="mt-3 sm:mt-4 text-xl sm:text-2xl lg:text-[25px] xl:text-[27px] text-retro-ink font-arcade leading-relaxed max-w-2xl">
+                <p className="mt-2.5 sm:mt-3 text-lg sm:text-xl lg:text-[22px] xl:text-[25px] text-retro-ink font-arcade leading-relaxed">
                   {PERSONAL_INFO.subtext}
                 </p>
               </div>
 
-              {/* Retro 8-bit Metric & Spec Grid - Centered */}
-              <div className="my-2.5 sm:my-3.5 grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3.5 font-arcade text-lg">
-                <div className="p-3 sm:p-3.5 bg-retro-surface border-2 border-retro-border shadow-[2px_2px_0px_#2C221E] flex flex-col items-center justify-center text-center">
-                  <Cpu className="w-6 h-6 text-retro-green mb-1.5 shrink-0" />
+              {/* Retro 8-bit Metric & Spec Grid - Centered & Equal Heights */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3">
+                <div className="p-2.5 sm:p-3 bg-retro-surface border-2 border-retro-border shadow-[2px_2px_0px_#2C221E] flex flex-col items-center justify-center text-center">
+                  <Cpu className="w-5 h-5 sm:w-6 sm:h-6 text-retro-green mb-1 shrink-0" />
                   <div className="text-[8px] sm:text-[9px] font-pixel text-retro-inkLight uppercase leading-tight text-center">
                     INGENIERÍA SOFTWARE
                   </div>
-                  <div className="text-retro-green font-arcade font-bold text-lg sm:text-xl lg:text-[22px] leading-snug mt-1 text-center">
+                  <div className="text-retro-green font-arcade font-bold text-base sm:text-lg lg:text-xl leading-tight mt-1 text-center">
                     Diseño modular y valor
                   </div>
                 </div>
 
-                <div className="p-3 sm:p-3.5 bg-retro-surface border-2 border-retro-border shadow-[2px_2px_0px_#2C221E] flex flex-col items-center justify-center text-center">
-                  <HardDrive className="w-6 h-6 text-retro-cyan mb-1.5 shrink-0" />
+                <div className="p-2.5 sm:p-3 bg-retro-surface border-2 border-retro-border shadow-[2px_2px_0px_#2C221E] flex flex-col items-center justify-center text-center">
+                  <HardDrive className="w-5 h-5 sm:w-6 sm:h-6 text-retro-cyan mb-1 shrink-0" />
                   <div className="text-[8px] sm:text-[9px] font-pixel text-retro-inkLight uppercase leading-tight text-center">
                     SISTEMAS &amp; ARQUITECTURA
                   </div>
-                  <div className="text-retro-cyan font-arcade font-bold text-lg sm:text-xl lg:text-[22px] leading-snug mt-1 text-center">
+                  <div className="text-retro-cyan font-arcade font-bold text-base sm:text-lg lg:text-xl leading-tight mt-1 text-center">
                     Distribuidos y concurrencia
                   </div>
                 </div>
 
-                <div className="p-3 sm:p-3.5 bg-retro-surface border-2 border-retro-border shadow-[2px_2px_0px_#2C221E] flex flex-col items-center justify-center text-center">
-                  <Shield className="w-6 h-6 text-retro-yellow mb-1.5 shrink-0" />
+                <div className="p-2.5 sm:p-3 bg-retro-surface border-2 border-retro-border shadow-[2px_2px_0px_#2C221E] flex flex-col items-center justify-center text-center">
+                  <Shield className="w-5 h-5 sm:w-6 sm:h-6 text-retro-yellow mb-1 shrink-0" />
                   <div className="text-[8px] sm:text-[9px] font-pixel text-retro-inkLight uppercase leading-tight text-center">
                     VISIÓN NEGOCIO &amp; ADE
                   </div>
-                  <div className="text-retro-yellow font-arcade font-bold text-lg sm:text-xl lg:text-[22px] leading-snug mt-1 text-center">
+                  <div className="text-retro-yellow font-arcade font-bold text-base sm:text-lg lg:text-xl leading-tight mt-1 text-center">
                     Estrategia y equipo
                   </div>
                 </div>
               </div>
 
               {/* Pixel Social Links: GitHub & LinkedIn */}
-              <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-1">
+              <div className="flex flex-wrap items-center gap-3 pt-0.5">
                 <a
                   href={PERSONAL_INFO.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="pixel-btn px-6 py-3 sm:py-3.5 bg-retro-greenPastel hover:bg-retro-greenLight text-retro-ink font-pixel text-xs sm:text-sm font-bold border-2 border-retro-border flex items-center gap-2"
+                  className="pixel-btn px-5 py-2.5 sm:px-6 sm:py-3 bg-retro-greenPastel hover:bg-retro-greenLight text-retro-ink font-pixel text-xs sm:text-sm font-bold border-2 border-retro-border flex items-center gap-2"
                 >
                   <Github className="w-4 h-4 text-retro-ink" />
                   <span>GITHUB /Leonin04</span>
@@ -99,7 +99,7 @@ export const Hero: React.FC = () => {
                   href={PERSONAL_INFO.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="pixel-btn px-6 py-3 sm:py-3.5 bg-retro-cyanPastel hover:bg-retro-cyanLight text-retro-ink font-pixel text-xs sm:text-sm font-bold border-2 border-retro-border flex items-center gap-2"
+                  className="pixel-btn px-5 py-2.5 sm:px-6 sm:py-3 bg-retro-cyanPastel hover:bg-retro-cyanLight text-retro-ink font-pixel text-xs sm:text-sm font-bold border-2 border-retro-border flex items-center gap-2"
                 >
                   <Linkedin className="w-4 h-4 text-retro-ink" />
                   <span>LINKEDIN /david-bacas</span>
@@ -107,11 +107,11 @@ export const Hero: React.FC = () => {
               </div>
             </div>
 
-            {/* Right Column: Retro Photo Frame & Operator HUD */}
-            <div className="shrink-0 flex flex-col items-center">
-              <div className="bg-retro-surface pixel-box p-3.5 sm:p-4 border-3 border-retro-border relative">
+            {/* Right Column: Retro Photo Frame & Operator HUD (Fixed, proportional width) */}
+            <div className="shrink-0 flex flex-col items-center w-full max-w-[260px] sm:max-w-[280px] lg:w-[290px] xl:w-[320px] mx-auto lg:mx-0 mt-3 lg:mt-0">
+              <div className="w-full bg-retro-surface pixel-box p-3 sm:p-3.5 border-3 border-retro-border">
                 {/* Header bar of the photo frame */}
-                <div className="w-full flex items-center justify-between pb-2 mb-2.5 border-b-2 border-retro-border font-pixel text-[10px] sm:text-xs text-retro-inkMuted gap-4">
+                <div className="w-full flex items-center justify-between pb-1.5 mb-2 border-b-2 border-retro-border font-pixel text-[9px] sm:text-[10px] text-retro-inkMuted">
                   <span className="flex items-center gap-1.5 text-retro-green font-bold">
                     <span className="w-2 h-2 bg-retro-greenPastel inline-block border border-retro-border animate-pulse" />
                     PHOTO::OPERATOR
@@ -120,28 +120,28 @@ export const Hero: React.FC = () => {
                 </div>
 
                 {/* Photo frame */}
-                <div className="w-52 h-52 sm:w-60 sm:h-60 md:w-68 md:h-68 lg:w-80 lg:h-80 xl:w-88 xl:h-88 overflow-hidden border-2 border-retro-border bg-retro-panel relative group">
+                <div className="w-full aspect-square overflow-hidden border-2 border-retro-border bg-retro-panel relative group">
                   <img
                     src={profilePic}
                     alt={PERSONAL_INFO.name}
                     className="w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
                   />
                   {/* Subtle pixel scanlines/corners */}
-                  <div className="absolute top-1.5 left-1.5 w-2.5 h-2.5 border-t-2 border-l-2 border-retro-sandLight pointer-events-none" />
-                  <div className="absolute top-1.5 right-1.5 w-2.5 h-2.5 border-t-2 border-r-2 border-retro-sandLight pointer-events-none" />
-                  <div className="absolute bottom-1.5 left-1.5 w-2.5 h-2.5 border-b-2 border-l-2 border-retro-sandLight pointer-events-none" />
-                  <div className="absolute bottom-1.5 right-1.5 w-2.5 h-2.5 border-b-2 border-r-2 border-retro-sandLight pointer-events-none" />
+                  <div className="absolute top-1 left-1 w-2 h-2 border-t-2 border-l-2 border-retro-sandLight pointer-events-none" />
+                  <div className="absolute top-1 right-1 w-2 h-2 border-t-2 border-r-2 border-retro-sandLight pointer-events-none" />
+                  <div className="absolute bottom-1 left-1 w-2 h-2 border-b-2 border-l-2 border-retro-sandLight pointer-events-none" />
+                  <div className="absolute bottom-1 right-1 w-2 h-2 border-b-2 border-r-2 border-retro-sandLight pointer-events-none" />
                 </div>
 
                 {/* Footer bar of photo */}
-                <div className="w-full mt-2.5 pt-2.5 border-t-2 border-retro-border flex items-center justify-between font-pixel text-[9px] sm:text-[10px] text-retro-inkLight">
+                <div className="w-full mt-2 pt-2 border-t-2 border-retro-border flex items-center justify-between font-pixel text-[9px] sm:text-[10px] text-retro-inkLight">
                   <span>DAVID</span>
                   <span className="text-retro-cyan font-bold">UGR // INF+ADE</span>
                 </div>
               </div>
 
-              {/* Status telemetry box below photo to balance height */}
-              <div className="w-full mt-3 p-2.5 bg-retro-surface pixel-box border-2 border-retro-border font-pixel text-[10px] sm:text-xs text-retro-inkMuted flex flex-col gap-1.5 shadow-[2px_2px_0px_#2C221E]">
+              {/* Status telemetry box below photo */}
+              <div className="w-full mt-2.5 p-2 sm:p-2.5 bg-retro-surface pixel-box border-2 border-retro-border font-pixel text-[9px] sm:text-[10px] text-retro-inkMuted flex flex-col gap-1.5 shadow-[2px_2px_0px_#2C221E]">
                 <div className="flex items-center justify-between">
                   <span className="flex items-center gap-1.5 text-retro-inkLight">
                     <MapPin className="w-3 h-3 text-retro-yellow" />
@@ -171,4 +171,3 @@ export const Hero: React.FC = () => {
     </section>
   );
 };
-

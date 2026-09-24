@@ -93,9 +93,9 @@ export const TechStack: React.FC = () => {
   return (
     <section
       id="skills"
-      className="relative h-[calc(100vh-56px)] max-h-[calc(100vh-56px)] snap-start flex flex-col justify-between py-3 sm:py-4 border-b-4 border-retro-border bg-retro-bg overflow-hidden"
+      className="relative min-h-[calc(100vh-56px)] lg:h-[calc(100vh-56px)] lg:max-h-[calc(100vh-56px)] snap-start flex flex-col justify-between py-4 sm:py-6 lg:py-3 border-b-4 border-retro-border bg-retro-bg overflow-visible lg:overflow-hidden"
     >
-      <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 flex flex-col justify-between h-full">
+      <div className="w-full max-w-[1440px] mx-auto px-3 sm:px-6 lg:px-10 flex flex-col justify-between h-full">
         {/* Section Header */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-2 mb-2 sm:mb-2.5">
           <div>
@@ -191,7 +191,7 @@ export const TechStack: React.FC = () => {
         </div>
 
         {/* Console Reader Panel (Contenedor Principal Limpio) */}
-        <div className="bg-retro-panel pixel-box border-3 border-retro-border p-3.5 sm:p-4 relative overflow-hidden flex-1 flex flex-col justify-between">
+        <div className="bg-retro-panel pixel-box border-3 border-retro-border p-3 sm:p-4 relative overflow-visible lg:overflow-hidden flex-1 flex flex-col justify-between">
           {/* Console Header Bar */}
           <div className="flex flex-wrap items-center justify-between gap-2 pb-2 mb-2 border-b-2 border-retro-border font-pixel text-[9px] sm:text-[10px]">
             <div className="flex items-center gap-2 text-retro-ink">

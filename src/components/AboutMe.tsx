@@ -33,9 +33,9 @@ export const AboutMe: React.FC<AboutMeProps> = ({ onOpenCv }) => {
   return (
     <section
       id="sobre-mi"
-      className="relative h-[calc(100vh-56px)] max-h-[calc(100vh-56px)] snap-start flex flex-col justify-between py-3 sm:py-4 border-b-4 border-retro-border bg-retro-bgAlt overflow-hidden"
+      className="relative min-h-[calc(100vh-56px)] lg:h-[calc(100vh-56px)] lg:max-h-[calc(100vh-56px)] snap-start flex flex-col justify-between py-6 sm:py-8 lg:py-4 border-b-4 border-retro-border bg-retro-bgAlt overflow-visible lg:overflow-hidden"
     >
-      <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 flex flex-col justify-between h-full">
+      <div className="w-full max-w-[1440px] mx-auto px-3 sm:px-6 lg:px-10 flex flex-col justify-between h-full">
         {/* Section Header */}
         <div className="mb-2 sm:mb-2.5">
           <div className="inline-flex items-center gap-1.5 px-2.5 py-1 mb-1.5 bg-retro-panel border-2 border-retro-border text-retro-cyan font-pixel text-[9px] sm:text-[10px] font-bold shadow-[2px_2px_0px_#2C221E]">

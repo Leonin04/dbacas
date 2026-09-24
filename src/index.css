@@ -9,10 +9,16 @@
 
   html {
     scroll-behavior: smooth;
-    scroll-snap-type: y mandatory;
     scroll-padding-top: 56px;
     background-color: #F6F0E6;
     color: #2C221E;
+  }
+
+  /* Solo activar scroll-snap en pantallas grandes con altura vertical suficiente */
+  @media (min-width: 1024px) and (min-height: 800px) {
+    html {
+      scroll-snap-type: y mandatory;
+    }
   }
 
   body {

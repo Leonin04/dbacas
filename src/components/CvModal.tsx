@@ -32,18 +32,19 @@ export const CvModal: React.FC<CvModalProps> = ({ isOpen, onClose }) => {
         onClick={(e) => e.stopPropagation()}
       >
         {/* Top Bar */}
-        <div className="flex items-center justify-between px-5 py-3 bg-retro-surface border-b-4 border-retro-border font-pixel text-xs">
-          <div className="flex items-center gap-2 text-retro-ink font-bold">
+        <div className="flex items-center justify-between px-3 sm:px-5 py-2.5 sm:py-3 bg-retro-surface border-b-4 border-retro-border font-pixel text-[10px] sm:text-xs">
+          <div className="flex items-center gap-2 text-retro-ink font-bold truncate">
             <span>[DOSSIER: {PERSONAL_INFO.handle.toUpperCase()}.DAT]</span>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
             <button
               onClick={() => window.print()}
-              className="pixel-btn px-2.5 py-1 bg-retro-panel text-retro-ink font-pixel text-[9px] flex items-center gap-1.5 hover:bg-retro-surface"
+              className="pixel-btn px-2 sm:px-2.5 py-1 bg-retro-panel text-retro-ink font-pixel text-[8px] sm:text-[9px] flex items-center gap-1.5 hover:bg-retro-surface"
             >
               <Printer className="w-3.5 h-3.5 text-retro-yellow" />
-              <span>IMPRIMIR / PDF</span>
+              <span className="hidden sm:inline">IMPRIMIR / PDF</span>
+              <span className="sm:hidden">PDF</span>
             </button>
             <button
               onClick={onClose}
@@ -56,11 +57,11 @@ export const CvModal: React.FC<CvModalProps> = ({ isOpen, onClose }) => {
         </div>
 
         {/* Scrollable CV Body */}
-        <div className="p-6 sm:p-8 overflow-y-auto space-y-6 font-arcade text-xl leading-relaxed print:p-0 print:text-black">
+        <div className="p-4 sm:p-6 lg:p-8 overflow-y-auto space-y-5 sm:space-y-6 font-arcade text-lg sm:text-xl leading-relaxed print:p-0 print:text-black">
           {/* Header */}
-          <div className="border-b-2 border-retro-border pb-4">
-            <h1 className="font-pixel text-xl sm:text-2xl text-retro-ink">{CV_DATA.name}</h1>
-            <p className="font-pixel text-xs text-retro-green font-bold mt-2">{CV_DATA.title}</p>
+          <div className="border-b-2 border-retro-border pb-3 sm:pb-4">
+            <h1 className="font-pixel text-lg sm:text-2xl text-retro-ink">{CV_DATA.name}</h1>
+            <p className="font-pixel text-[10px] sm:text-xs text-retro-green font-bold mt-1.5 sm:mt-2">{CV_DATA.title}</p>
             <div className="mt-3 flex flex-wrap gap-4 text-base text-retro-inkMuted font-bold">
               <span>EMAIL: {PERSONAL_INFO.email}</span>
               <span>GITHUB: {PERSONAL_INFO.github}</span>

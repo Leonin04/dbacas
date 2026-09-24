@@ -62,11 +62,11 @@ export const Projects: React.FC = () => {
   return (
     <section
       id="proyectos"
-      className="relative h-[calc(100vh-56px)] max-h-[calc(100vh-56px)] snap-start flex flex-col justify-between py-2 sm:py-3 border-b-4 border-retro-border bg-retro-bgAlt overflow-hidden"
+      className="relative min-h-[calc(100vh-56px)] lg:h-[calc(100vh-56px)] lg:max-h-[calc(100vh-56px)] snap-start flex flex-col justify-between py-4 sm:py-6 lg:py-3 border-b-4 border-retro-border bg-retro-bgAlt overflow-visible lg:overflow-hidden"
     >
-      <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 flex flex-col justify-between h-full">
+      <div className="w-full max-w-[1440px] mx-auto px-3 sm:px-6 lg:px-10 flex flex-col justify-between h-full">
         {/* Section Header */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2 shrink-0">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 mb-2 shrink-0">
           <div>
             <div className="inline-flex items-center gap-1.5 px-2 py-0.5 mb-1 bg-retro-panel border-2 border-retro-border text-retro-green font-pixel text-[8px] sm:text-[9px] font-bold shadow-[2px_2px_0px_#2C221E]">
               <span className="w-2 h-2 bg-retro-greenPastel border border-retro-border inline-block animate-pulse" />
@@ -81,7 +81,7 @@ export const Projects: React.FC = () => {
           </div>
 
           {/* 3 Category Filter Chips */}
-          <div className="flex items-center gap-1 p-0.5 bg-retro-surfaceAlt pixel-box shrink-0">
+          <div className="flex flex-wrap items-center gap-1 p-0.5 bg-retro-surfaceAlt pixel-box shrink-0 self-start sm:self-auto">
             {categories.map((cat) => (
               <button
                 key={cat}
@@ -182,8 +182,8 @@ export const Projects: React.FC = () => {
                           </div>
                         </div>
 
-                        {/* Video Demo Player - Contained height */}
-                        <div className="relative w-full h-28 sm:h-32 md:h-36 max-h-36 bg-[#1C1613] border-2 border-retro-border overflow-hidden shadow-[2px_2px_0px_#2C221E] my-1">
+                        {/* Video Demo Player - Responsive aspect ratio */}
+                        <div className="relative w-full aspect-video max-h-36 sm:max-h-40 md:max-h-44 bg-[#1C1613] border-2 border-retro-border overflow-hidden shadow-[2px_2px_0px_#2C221E] my-1">
                           {videoUrl ? (
                             <video
                               src={videoUrl}
