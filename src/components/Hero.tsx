@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Github, Cpu, HardDrive, Shield, Layers, MapPin, Terminal, CheckCircle2 } from 'lucide-react';
+import { Github, Linkedin, Cpu, HardDrive, Shield, MapPin, Terminal, CheckCircle2 } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 import profilePic from '../data/yo.jpg';
 
@@ -50,69 +50,59 @@ export const Hero: React.FC = () => {
                 </p>
               </div>
 
-              {/* Retro 8-bit Metric & Spec Grid */}
-              <div className="my-3 sm:my-4 grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-3.5 font-arcade text-lg">
-                <div className="p-3 sm:p-3.5 bg-retro-surface border-2 border-retro-border shadow-[2px_2px_0px_#2C221E] flex items-center gap-3">
-                  <Cpu className="w-6 h-6 sm:w-7 sm:h-7 text-retro-green shrink-0" />
-                  <div className="min-w-0">
-                    <div className="text-[10px] sm:text-xs font-pixel text-retro-inkLight uppercase truncate">INGENIERÍA SOFTWARE</div>
-                    <div className="text-retro-green font-bold text-lg sm:text-xl truncate">Diseño modular y valor</div>
+              {/* Retro 8-bit Metric & Spec Grid - Centered */}
+              <div className="my-2.5 sm:my-3.5 grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3.5 font-arcade text-lg">
+                <div className="p-3 sm:p-3.5 bg-retro-surface border-2 border-retro-border shadow-[2px_2px_0px_#2C221E] flex flex-col items-center justify-center text-center">
+                  <Cpu className="w-6 h-6 text-retro-green mb-1.5 shrink-0" />
+                  <div className="text-[8px] sm:text-[9px] font-pixel text-retro-inkLight uppercase leading-tight text-center">
+                    INGENIERÍA SOFTWARE
+                  </div>
+                  <div className="text-retro-green font-arcade font-bold text-lg sm:text-xl lg:text-[22px] leading-snug mt-1 text-center">
+                    Diseño modular y valor
                   </div>
                 </div>
 
-                <div className="p-3 sm:p-3.5 bg-retro-surface border-2 border-retro-border shadow-[2px_2px_0px_#2C221E] flex items-center gap-3">
-                  <HardDrive className="w-6 h-6 sm:w-7 sm:h-7 text-retro-cyan shrink-0" />
-                  <div className="min-w-0">
-                    <div className="text-[10px] sm:text-xs font-pixel text-retro-inkLight uppercase truncate">SISTEMAS &amp; ARQUITECTURA</div>
-                    <div className="text-retro-cyan font-bold text-lg sm:text-xl truncate">Distribuidos y concurrencia</div>
+                <div className="p-3 sm:p-3.5 bg-retro-surface border-2 border-retro-border shadow-[2px_2px_0px_#2C221E] flex flex-col items-center justify-center text-center">
+                  <HardDrive className="w-6 h-6 text-retro-cyan mb-1.5 shrink-0" />
+                  <div className="text-[8px] sm:text-[9px] font-pixel text-retro-inkLight uppercase leading-tight text-center">
+                    SISTEMAS &amp; ARQUITECTURA
+                  </div>
+                  <div className="text-retro-cyan font-arcade font-bold text-lg sm:text-xl lg:text-[22px] leading-snug mt-1 text-center">
+                    Distribuidos y concurrencia
                   </div>
                 </div>
 
-                <div className="p-3 sm:p-3.5 bg-retro-surface border-2 border-retro-border shadow-[2px_2px_0px_#2C221E] flex items-center gap-3">
-                  <Shield className="w-6 h-6 sm:w-7 sm:h-7 text-retro-yellow shrink-0" />
-                  <div className="min-w-0">
-                    <div className="text-[10px] sm:text-xs font-pixel text-retro-inkLight uppercase truncate">VISIÓN NEGOCIO &amp; ADE</div>
-                    <div className="text-retro-yellow font-bold text-lg sm:text-xl truncate">Estrategia y equipo</div>
+                <div className="p-3 sm:p-3.5 bg-retro-surface border-2 border-retro-border shadow-[2px_2px_0px_#2C221E] flex flex-col items-center justify-center text-center">
+                  <Shield className="w-6 h-6 text-retro-yellow mb-1.5 shrink-0" />
+                  <div className="text-[8px] sm:text-[9px] font-pixel text-retro-inkLight uppercase leading-tight text-center">
+                    VISIÓN NEGOCIO &amp; ADE
+                  </div>
+                  <div className="text-retro-yellow font-arcade font-bold text-lg sm:text-xl lg:text-[22px] leading-snug mt-1 text-center">
+                    Estrategia y equipo
                   </div>
                 </div>
               </div>
 
-              {/* Pixel CTAs */}
+              {/* Pixel Social Links: GitHub & LinkedIn */}
               <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-1">
-                <a
-                  href="#proyectos"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    const el = document.getElementById('proyectos');
-                    if (el) window.scrollTo({ top: el.offsetTop - 56, behavior: 'smooth' });
-                  }}
-                  className="pixel-btn px-6 py-3 sm:py-3.5 bg-retro-greenPastel hover:bg-retro-greenLight text-retro-ink font-pixel text-xs sm:text-sm font-bold flex items-center gap-2"
-                >
-                  <span>VER PROYECTOS</span>
-                  <ArrowRight className="w-4 h-4" />
-                </a>
-
-                <a
-                  href="#skills"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    const el = document.getElementById('skills');
-                    if (el) window.scrollTo({ top: el.offsetTop - 56, behavior: 'smooth' });
-                  }}
-                  className="pixel-btn px-6 py-3 sm:py-3.5 bg-retro-yellowPastel hover:bg-retro-yellowLight text-retro-ink font-pixel text-xs sm:text-sm font-bold border-2 border-retro-border flex items-center gap-2"
-                >
-                  <Layers className="w-4 h-4" />
-                  <span>STACK TÉCNICO</span>
-                </a>
-
                 <a
                   href={PERSONAL_INFO.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="pixel-btn px-6 py-3 sm:py-3.5 bg-retro-cyanPastel hover:bg-retro-cyanLight text-retro-ink font-pixel text-xs sm:text-sm font-bold border-2 border-retro-border flex items-center gap-2"
+                  className="pixel-btn px-6 py-3 sm:py-3.5 bg-retro-greenPastel hover:bg-retro-greenLight text-retro-ink font-pixel text-xs sm:text-sm font-bold border-2 border-retro-border flex items-center gap-2"
                 >
                   <Github className="w-4 h-4 text-retro-ink" />
                   <span>GITHUB /Leonin04</span>
+                </a>
+
+                <a
+                  href={PERSONAL_INFO.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="pixel-btn px-6 py-3 sm:py-3.5 bg-retro-cyanPastel hover:bg-retro-cyanLight text-retro-ink font-pixel text-xs sm:text-sm font-bold border-2 border-retro-border flex items-center gap-2"
+                >
+                  <Linkedin className="w-4 h-4 text-retro-ink" />
+                  <span>LINKEDIN /david-bacas</span>
                 </a>
               </div>
             </div>
@@ -145,7 +135,7 @@ export const Hero: React.FC = () => {
 
                 {/* Footer bar of photo */}
                 <div className="w-full mt-2.5 pt-2.5 border-t-2 border-retro-border flex items-center justify-between font-pixel text-[9px] sm:text-[10px] text-retro-inkLight">
-                  <span>DAVID BACAS POSADAS</span>
+                  <span>DAVID</span>
                   <span className="text-retro-cyan font-bold">UGR // INF+ADE</span>
                 </div>
               </div>

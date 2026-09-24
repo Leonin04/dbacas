@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUp, Github, Linkedin, Mail } from 'lucide-react';
+import { ArrowUp, Instagram, Mail } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 
 export const Footer: React.FC = () => {
@@ -19,26 +19,16 @@ export const Footer: React.FC = () => {
             <span className="text-retro-inkMuted">{PERSONAL_INFO.name}</span>
           </div>
 
-          {/* Social Links */}
+          {/* Social Links: Instagram & Email */}
           <div className="flex items-center gap-5 font-bold">
             <a
-              href={PERSONAL_INFO.github}
+              href={PERSONAL_INFO.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-retro-ink hover:text-retro-green flex items-center gap-1.5 transition-colors"
+              className="text-retro-ink hover:text-retro-red flex items-center gap-1.5 transition-colors"
             >
-              <Github className="w-3.5 h-3.5" />
-              <span>GITHUB</span>
-            </a>
-
-            <a
-              href={PERSONAL_INFO.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-retro-ink hover:text-retro-cyan flex items-center gap-1.5 transition-colors"
-            >
-              <Linkedin className="w-3.5 h-3.5" />
-              <span>LINKEDIN</span>
+              <Instagram className="w-3.5 h-3.5" />
+              <span>INSTAGRAM</span>
             </a>
 
             <a

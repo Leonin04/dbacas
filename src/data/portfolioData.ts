@@ -9,7 +9,9 @@ export const PERSONAL_INFO = {
   location: "Granada, España",
   availability: "5º Curso Activo // Abierto a nuevos proyectos y oportunidades",
   github: "https://github.com/Leonin04",
-  linkedin: "https://www.linkedin.com/in/david-bacas",
+  linkedin: "https://www.linkedin.com/in/david-bacas-posadas-07a888312/",
+  instagram: "https://www.instagram.com/davidbp04",
+  instagramHandle: "davidbp04",
   email: "davidbacas.dev@gmail.com",
 };
 
