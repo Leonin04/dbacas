@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Code2, Server, Globe, TrendingUp, Sparkles, HardDrive, Terminal, Check } from 'lucide-react';
-import { SKILL_CATEGORIES } from '../data/portfolioData';
+import { useLanguage } from '../context/LanguageContext';
+import { getSkillCategories } from '../data/portfolioData';
+import { getTranslations } from '../data/translations';
 
-interface CartridgeInfo {
+interface CartridgeBase {
   id: number;
-  shortTitle: string;
   romCode: string;
-  subtitle: string;
   themeColor: string;
   accentBorder: string;
   badgeBg: string;
@@ -14,12 +14,10 @@ interface CartridgeInfo {
   icon: React.ComponentType<{ className?: string }>;
 }
 
-const CARTRIDGES: CartridgeInfo[] = [
+const CARTRIDGE_CONFIG: CartridgeBase[] = [
   {
     id: 0,
-    shortTitle: "LENGUAJES CORE",
     romCode: "ROM-01",
-    subtitle: "C++, Java, Ruby, Bash",
     themeColor: "text-retro-green",
     accentBorder: "border-retro-green",
     badgeBg: "bg-retro-greenPastel/30",
@@ -28,9 +26,7 @@ const CARTRIDGES: CartridgeInfo[] = [
   },
   {
     id: 1,
-    shortTitle: "ALGORITMOS & SISTEMAS",
     romCode: "ROM-02",
-    subtitle: "Grafos, Distribuidos, C++",
     themeColor: "text-retro-cyan",
     accentBorder: "border-retro-cyan",
     badgeBg: "bg-retro-cyanPastel/30",
@@ -39,9 +35,7 @@ const CARTRIDGES: CartridgeInfo[] = [
   },
   {
     id: 2,
-    shortTitle: "SOFTWARE & WEB",
     romCode: "ROM-03",
-    subtitle: "Three.js, UML, Godot",
     themeColor: "text-retro-yellow",
     accentBorder: "border-retro-yellow",
     badgeBg: "bg-retro-yellowPastel/30",
@@ -50,9 +44,7 @@ const CARTRIDGES: CartridgeInfo[] = [
   },
   {
     id: 3,
-    shortTitle: "GESTIÓN & ADE",
     romCode: "ROM-04",
-    subtitle: "Finanzas, Economía, Negocio",
     themeColor: "text-retro-red",
     accentBorder: "border-retro-red",
     badgeBg: "bg-retro-redPastel/30",
@@ -61,34 +53,16 @@ const CARTRIDGES: CartridgeInfo[] = [
   },
 ];
 
-// Unified tag & proficiency level for each technology
-const SKILL_METADATA: Record<string, { tag: string; level: string }> = {
-  "C++": { tag: "Punteros & Memoria", level: "Dominio" },
-  "Java": { tag: "POO & Sockets", level: "Medio-Alto" },
-  "Ruby": { tag: "POO Dinámica", level: "Medio" },
-  "JavaScript": { tag: "Web & Asincronía", level: "Competente" },
-  "Bash / Shell": { tag: "Terminal & Scripts", level: "Soltura" },
-  "PHP": { tag: "Backend & Servidor", level: "Básico" },
-  "Algoritmos de Búsqueda": { tag: "Dijkstra & A*", level: "Avanzado" },
-  "Estructuras de Datos": { tag: "Árboles & Grafos", level: "Dominio" },
-  "Paradigmas Algorítmicos": { tag: "Greedy, D&C & Coste", level: "Avanzado" },
-  "Sistemas Distribuidos": { tag: "Exclusión Mutua", level: "Avanzado" },
-  "Three.js & Gráficos": { tag: "WebGL & 3D", level: "Competente" },
-  "HTML5 & CSS3": { tag: "Estándares Web", level: "Avanzado" },
-  "Ingeniería del Software": { tag: "UML & Requisitos", level: "Avanzado" },
-  "Godot Engine": { tag: "Nodos & Escenas", level: "Básico" },
-  "Análisis de Estados Financieros": { tag: "Balances & PyG", level: "Avanzado" },
-  "Operaciones Financieras": { tag: "Valoración de Flujos", level: "Avanzado" },
-  "Micro & Macroeconomía": { tag: "Mercados & Empresa", level: "Sólido" },
-  "Trabajo en Equipo & Soft Skills": { tag: "Erasmus & Liderazgo", level: "Experiencia" },
-};
-
 export const TechStack: React.FC = () => {
+  const { language } = useLanguage();
+  const skillCategories = getSkillCategories(language);
+  const t = getTranslations(language);
+
   const [selectedCartridgeIndex, setSelectedCartridgeIndex] = useState<number>(0);
   const [inspectedSkillName, setInspectedSkillName] = useState<string | null>(null);
 
-  const activeCategory = SKILL_CATEGORIES[selectedCartridgeIndex] || SKILL_CATEGORIES[0];
-  const activeCartridge = CARTRIDGES[selectedCartridgeIndex] || CARTRIDGES[0];
+  const activeCategory = skillCategories[selectedCartridgeIndex] || skillCategories[0];
+  const activeCartridgeConfig = CARTRIDGE_CONFIG[selectedCartridgeIndex] || CARTRIDGE_CONFIG[0];
 
   return (
     <section
@@ -101,28 +75,29 @@ export const TechStack: React.FC = () => {
           <div>
             <div className="inline-flex items-center gap-1.5 px-2.5 py-1 mb-1.5 bg-retro-surface border-2 border-retro-border text-retro-yellow font-pixel text-[9px] sm:text-[10px] font-bold shadow-[2px_2px_0px_#2C221E]">
               <Sparkles className="w-3 h-3 text-retro-yellow" />
-              <span>[STAGE 02] :: STACK TÉCNICO &amp; ESPECIALIDADES</span>
+              <span>{t.techStack.stage}</span>
             </div>
             <h2 className="font-pixel text-lg sm:text-2xl text-retro-ink">
-              STACK DE DESARROLLO
+              {t.techStack.title}
             </h2>
             <p className="font-arcade text-base sm:text-xl text-retro-inkMuted max-w-2xl leading-tight">
-              Selecciona una categoría para cargar sus tecnologías y áreas de aplicación técnica.
+              {t.techStack.subtitle}
             </p>
           </div>
 
           {/* Quick HUD indicator */}
           <div className="flex items-center gap-2 px-2.5 py-1 bg-retro-surface pixel-box font-pixel text-[9px] text-retro-inkMuted">
             <span className="w-2 h-2 bg-retro-greenPastel border border-retro-border animate-pulse inline-block" />
-            <span className="font-bold text-retro-ink uppercase">4 CATEGORÍAS ACTIVAS</span>
+            <span className="font-bold text-retro-ink uppercase">{t.techStack.activeCategories}</span>
           </div>
         </div>
 
         {/* Clean Retro Cartridges (Selector Tabs) */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3.5 mb-2.5">
-          {CARTRIDGES.map((cart, idx) => {
+          {CARTRIDGE_CONFIG.map((cart, idx) => {
             const isSelected = selectedCartridgeIndex === idx;
             const Icon = cart.icon;
+            const cartText = t.techStack.cartridges[idx] || { title: '', subtitle: '' };
 
             return (
               <button
@@ -136,7 +111,7 @@ export const TechStack: React.FC = () => {
                     ? 'translate-y-0.5'
                     : 'hover:-translate-y-0.5 opacity-85 hover:opacity-100'
                 }`}
-                title={`Cargar categoría: ${SKILL_CATEGORIES[idx].title}`}
+                title={`${skillCategories[idx]?.title || ''}`}
               >
                 {/* Cartridge Top Notch */}
                 <div className="w-12 mx-auto h-1 bg-retro-border rounded-t-sm" />
@@ -155,11 +130,11 @@ export const TechStack: React.FC = () => {
                     {isSelected ? (
                       <span className="text-retro-green font-bold flex items-center gap-1">
                         <span className="w-1.5 h-1.5 bg-retro-greenPastel inline-block border border-retro-border" />
-                        ACTIVO
+                        {t.techStack.statusActive}
                       </span>
                     ) : (
                       <span className="text-retro-inkLight group-hover:text-retro-ink">
-                        SELECCIONAR
+                        {t.techStack.statusSelect}
                       </span>
                     )}
                   </div>
@@ -175,14 +150,14 @@ export const TechStack: React.FC = () => {
                     </div>
                     <div className="min-w-0">
                       <div className="font-pixel text-[9px] sm:text-[10px] font-bold text-retro-ink truncate leading-tight">
-                        {cart.shortTitle}
+                        {cartText.title}
                       </div>
                     </div>
                   </div>
 
                   {/* Subtitle / Key tech preview */}
                   <div className="font-arcade text-xs sm:text-sm text-retro-inkMuted truncate mt-0.5">
-                    {cart.subtitle}
+                    {cartText.subtitle}
                   </div>
                 </div>
               </button>
@@ -190,7 +165,7 @@ export const TechStack: React.FC = () => {
           })}
         </div>
 
-        {/* Console Reader Panel (Contenedor Principal Limpio) */}
+        {/* Console Reader Panel */}
         <div className="bg-retro-panel pixel-box border-3 border-retro-border p-3 sm:p-4 relative overflow-visible lg:overflow-hidden flex-1 flex flex-col justify-between">
           {/* Console Header Bar */}
           <div className="flex flex-wrap items-center justify-between gap-2 pb-2 mb-2 border-b-2 border-retro-border font-pixel text-[9px] sm:text-[10px]">
@@ -198,7 +173,7 @@ export const TechStack: React.FC = () => {
               <span className="p-0.5 bg-retro-surface border border-retro-border">
                 <HardDrive className="w-3.5 h-3.5 text-retro-green" />
               </span>
-              <span className="text-retro-green font-bold">SLOT_01:</span>
+              <span className="text-retro-green font-bold">{t.techStack.slotTitle}</span>
               <span className="text-retro-ink font-bold uppercase">
                 {activeCategory.title}
               </span>
@@ -206,7 +181,7 @@ export const TechStack: React.FC = () => {
 
             <div className="flex items-center gap-2 font-pixel text-[8px] text-retro-inkLight">
               <span className="px-1.5 py-0.5 bg-retro-surface border border-retro-border text-retro-ink font-bold">
-                {activeCartridge.romCode} // {activeCategory.skills.length} TECNOLOGÍAS
+                {activeCartridgeConfig.romCode} // {activeCategory.skills.length} {t.techStack.techsCount}
               </span>
             </div>
           </div>
@@ -220,9 +195,9 @@ export const TechStack: React.FC = () => {
             }`}
           >
             {activeCategory.skills.map((skill) => {
-              const meta = SKILL_METADATA[skill.name] || {
-                tag: "Especialidad",
-                level: "Sólido",
+              const meta = t.techStack.skillLevels[skill.name] || {
+                tag: language === 'en' ? 'Specialty' : 'Especialidad',
+                level: language === 'en' ? 'Solid' : 'Sólido',
               };
               const isInspected = inspectedSkillName === skill.name;
 
@@ -235,7 +210,7 @@ export const TechStack: React.FC = () => {
                       ? 'border-retro-ink ring-2 ring-retro-ink shadow-[2px_2px_0px_#2C221E] bg-retro-surface'
                       : 'border-retro-border hover:shadow-[2px_2px_0px_#2C221E]'
                   }`}
-                  title="Haz clic para inspeccionar detalles técnicos"
+                  title={skill.name}
                 >
                   <div>
                     {/* Card Header: Skill Name & Level */}
@@ -265,7 +240,7 @@ export const TechStack: React.FC = () => {
             {inspectedSkillName ? (
               <div className="flex items-center gap-1.5 text-retro-ink min-w-0">
                 <Check className="w-3.5 h-3.5 text-retro-green shrink-0" />
-                <span className="font-pixel text-[8px] sm:text-[9px] text-retro-green font-bold shrink-0">&gt; DETALLE:</span>
+                <span className="font-pixel text-[8px] sm:text-[9px] text-retro-green font-bold shrink-0">{t.techStack.detailTitle}</span>
                 <span className="font-pixel text-[8px] sm:text-[9px] text-retro-ink font-bold shrink-0">{inspectedSkillName}</span>
                 <span className="text-xs sm:text-sm text-retro-inkMuted truncate">
                   — {activeCategory.skills.find((s) => s.name === inspectedSkillName)?.focus}
@@ -274,7 +249,7 @@ export const TechStack: React.FC = () => {
             ) : (
               <div className="flex items-center gap-1.5 text-retro-inkLight text-xs sm:text-sm">
                 <Terminal className="w-3.5 h-3.5 text-retro-yellow shrink-0" />
-                <span>Haz clic sobre cualquier tecnología para ver su detalle de aplicación en el sistema.</span>
+                <span>{t.techStack.inspectorHelp}</span>
               </div>
             )}
           </div>
@@ -283,3 +258,4 @@ export const TechStack: React.FC = () => {
     </section>
   );
 };
+

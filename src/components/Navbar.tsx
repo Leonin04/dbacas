@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { Github, FileText, Menu, X } from 'lucide-react';
-import { PERSONAL_INFO } from '../data/portfolioData';
+import { useLanguage } from '../context/LanguageContext';
+import { getPersonalInfo } from '../data/portfolioData';
+import { getTranslations } from '../data/translations';
+import { LanguageSwitch } from './LanguageSwitch';
 
 interface NavbarProps {
   onOpenCv: () => void;
@@ -8,12 +11,15 @@ interface NavbarProps {
 
 export const Navbar: React.FC<NavbarProps> = ({ onOpenCv }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { language } = useLanguage();
+  const personalInfo = getPersonalInfo(language);
+  const t = getTranslations(language);
 
   const navLinks = [
-    { name: 'INICIO', href: '#inicio' },
-    { name: 'PROYECTOS', href: '#proyectos' },
-    { name: 'STACK TÉCNICO', href: '#skills' },
-    { name: 'MÁS SOBRE MÍ', href: '#sobre-mi' },
+    { name: t.nav.home, href: '#inicio' },
+    { name: t.nav.projects, href: '#proyectos' },
+    { name: t.nav.techStack, href: '#skills' },
+    { name: t.nav.aboutMe, href: '#sobre-mi' },
   ];
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -53,7 +59,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCv }) => {
             &gt;_
           </span>
           <span className="text-retro-ink group-hover:text-retro-yellow transition-colors font-bold">
-            {PERSONAL_INFO.handle}
+            {personalInfo.handle}
           </span>
           <span className="text-retro-cyan text-[10px] hidden sm:inline">
             [SYS]
@@ -74,34 +80,38 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCv }) => {
           ))}
         </nav>
 
-        {/* Action Buttons */}
+        {/* Action Buttons & Language Switch (Right of GITHUB) */}
         <div className="hidden sm:flex items-center gap-3">
           <button
             onClick={onOpenCv}
             className="pixel-btn px-3 py-1.5 bg-retro-panel text-retro-ink font-pixel text-[10px] hover:bg-retro-surface flex items-center gap-1.5"
           >
             <FileText className="w-3.5 h-3.5 text-retro-yellow" />
-            <span>VER CV</span>
+            <span>{t.nav.viewCv}</span>
           </button>
 
           <a
-            href={PERSONAL_INFO.github}
+            href={personalInfo.github}
             target="_blank"
             rel="noopener noreferrer"
             className="pixel-btn px-3 py-1.5 bg-retro-greenPastel text-retro-ink font-pixel text-[10px] flex items-center gap-1.5 hover:bg-retro-greenLight"
           >
             <Github className="w-3.5 h-3.5" />
-            <span>GITHUB</span>
+            <span>{t.nav.github}</span>
           </a>
+
+          {/* Retro Switch placed exactly to the right of GITHUB as requested */}
+          <LanguageSwitch />
         </div>
 
-        {/* Mobile Hamburger */}
+        {/* Mobile Hamburger & Controls */}
         <div className="flex md:hidden items-center gap-2">
+          <LanguageSwitch size="sm" />
           <button
             onClick={onOpenCv}
             className="pixel-btn px-2.5 py-1 bg-retro-panel text-retro-yellow font-pixel text-[9px] font-bold"
           >
-            CV
+            {t.nav.cvMobile}
           </button>
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -128,16 +138,16 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCv }) => {
           ))}
           <div className="pt-2 border-t-2 border-retro-border flex items-center justify-between text-[10px]">
             <a
-              href={PERSONAL_INFO.github}
+              href={personalInfo.github}
               target="_blank"
               rel="noopener noreferrer"
               className="text-retro-green font-bold flex items-center gap-1.5"
             >
               <Github className="w-3.5 h-3.5" />
-              <span>GITHUB</span>
+              <span>{t.nav.github}</span>
             </a>
             <a
-              href={PERSONAL_INFO.linkedin}
+              href={personalInfo.linkedin}
               target="_blank"
               rel="noopener noreferrer"
               className="text-retro-cyan font-bold flex items-center gap-1.5"
@@ -150,3 +160,4 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCv }) => {
     </header>
   );
 };
+

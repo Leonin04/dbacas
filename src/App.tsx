@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { LanguageProvider } from './context/LanguageContext';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { Projects } from './components/Projects';
@@ -11,27 +12,29 @@ export const App: React.FC = () => {
   const [cvModalOpen, setCvModalOpen] = useState(false);
 
   return (
-    <div className="relative min-h-screen bg-retro-bg text-retro-ink flex flex-col selection:bg-retro-greenPastel selection:text-retro-ink">
-      {/* Retro Dot-Grid Background */}
-      <div className="fixed inset-0 bg-grid opacity-40 pointer-events-none z-0" />
+    <LanguageProvider>
+      <div className="relative min-h-screen bg-retro-bg text-retro-ink flex flex-col selection:bg-retro-greenPastel selection:text-retro-ink">
+        {/* Retro Dot-Grid Background */}
+        <div className="fixed inset-0 bg-grid opacity-40 pointer-events-none z-0" />
 
-      {/* 8-bit Sticky HUD / Navbar */}
-      <Navbar onOpenCv={() => setCvModalOpen(true)} />
+        {/* 8-bit Sticky HUD / Navbar */}
+        <Navbar onOpenCv={() => setCvModalOpen(true)} />
 
-      {/* Main Content */}
-      <main className="relative z-10 flex-1">
-        <Hero />
-        <Projects />
-        <TechStack />
-        <AboutMe onOpenCv={() => setCvModalOpen(true)} />
-      </main>
+        {/* Main Content */}
+        <main className="relative z-10 flex-1">
+          <Hero />
+          <Projects />
+          <TechStack />
+          <AboutMe onOpenCv={() => setCvModalOpen(true)} />
+        </main>
 
-      {/* Serious Retro Footer */}
-      <Footer />
+        {/* Serious Retro Footer */}
+        <Footer />
 
-      {/* 8-bit CV Modal */}
-      <CvModal isOpen={cvModalOpen} onClose={() => setCvModalOpen(false)} />
-    </div>
+        {/* 8-bit CV Modal */}
+        <CvModal isOpen={cvModalOpen} onClose={() => setCvModalOpen(false)} />
+      </div>
+    </LanguageProvider>
   );
 };
 

@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react';
 import { X, Printer, Briefcase, GraduationCap } from 'lucide-react';
-import { PERSONAL_INFO, CV_DATA, SKILL_CATEGORIES } from '../data/portfolioData';
+import { useLanguage } from '../context/LanguageContext';
+import { getPersonalInfo, getCvData, getSkillCategories } from '../data/portfolioData';
+import { getTranslations } from '../data/translations';
+import { LanguageSwitch } from './LanguageSwitch';
 import profilePic from '../data/yo.jpg';
 
 interface CvModalProps {
@@ -9,6 +12,12 @@ interface CvModalProps {
 }
 
 export const CvModal: React.FC<CvModalProps> = ({ isOpen, onClose }) => {
+  const { language } = useLanguage();
+  const personalInfo = getPersonalInfo(language);
+  const cvData = getCvData(language);
+  const skillCategories = getSkillCategories(language);
+  const t = getTranslations(language);
+
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
@@ -34,25 +43,31 @@ export const CvModal: React.FC<CvModalProps> = ({ isOpen, onClose }) => {
         className="relative w-full max-w-3xl max-h-[90vh] bg-retro-panel pixel-box border-4 border-retro-border flex flex-col overflow-hidden text-retro-ink cv-modal-container"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Top Bar */}
+        {/* Top Bar with Language Switcher */}
         <div className="flex items-center justify-between px-3 sm:px-5 py-2.5 sm:py-3 bg-retro-surface border-b-4 border-retro-border font-pixel text-[10px] sm:text-xs no-print">
           <div className="flex items-center gap-2 text-retro-ink font-bold truncate">
-            <span>[DOSSIER: {PERSONAL_INFO.handle.toUpperCase()}.DAT]</span>
+            <span>[{t.cvModal.dossier}: {personalInfo.handle.toUpperCase()}.DAT]</span>
+          </div>
+
+          {/* Retro Switch centered between dossier name and print/close buttons, exactly as in photo 2 */}
+          <div className="flex items-center justify-center px-1">
+            <LanguageSwitch size="sm" />
           </div>
 
           <div className="flex items-center gap-2 sm:gap-3 shrink-0">
             <button
               onClick={() => window.print()}
               className="pixel-btn px-2 sm:px-2.5 py-1 bg-retro-panel text-retro-ink font-pixel text-[8px] sm:text-[9px] flex items-center gap-1.5 hover:bg-retro-surface"
+              title={t.cvModal.printPdf}
             >
               <Printer className="w-3.5 h-3.5 text-retro-yellow" />
-              <span className="hidden sm:inline">IMPRIMIR / PDF</span>
-              <span className="sm:hidden">PDF</span>
+              <span className="hidden sm:inline">{t.cvModal.printPdf}</span>
+              <span className="sm:hidden">{t.cvModal.pdfMobile}</span>
             </button>
             <button
               onClick={onClose}
               className="pixel-btn p-1 bg-retro-redPastel text-retro-ink hover:bg-retro-redLight"
-              aria-label="Cerrar modal"
+              aria-label={t.cvModal.closeModalAria}
             >
               <X className="w-4 h-4" />
             </button>
@@ -64,13 +79,13 @@ export const CvModal: React.FC<CvModalProps> = ({ isOpen, onClose }) => {
           {/* Header */}
           <div className="border-b-2 border-retro-border pb-3 sm:pb-4 cv-print-header flex flex-row items-center justify-between gap-3 sm:gap-4">
             <div className="flex-1 min-w-0">
-              <h1 className="font-pixel text-lg sm:text-2xl text-retro-ink cv-print-name">{CV_DATA.name}</h1>
-              <p className="font-pixel text-[10px] sm:text-xs text-retro-green font-bold mt-1.5 sm:mt-2 cv-print-title">{CV_DATA.title}</p>
+              <h1 className="font-pixel text-lg sm:text-2xl text-retro-ink cv-print-name">{cvData.name}</h1>
+              <p className="font-pixel text-[10px] sm:text-xs text-retro-green font-bold mt-1.5 sm:mt-2 cv-print-title">{cvData.title}</p>
               <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-base text-retro-inkMuted font-bold cv-print-contacts">
-                <span>EMAIL: {PERSONAL_INFO.email}</span>
-                <span>LINKEDIN: {PERSONAL_INFO.linkedin.replace('https://www.', '').replace('https://', '')}</span>
-                <span>GITHUB: {PERSONAL_INFO.github.replace('https://', '')}</span>
-                <span>UBICACIÓN: {PERSONAL_INFO.location}</span>
+                <span>{t.cvModal.emailLabel} {personalInfo.email}</span>
+                <span>{t.cvModal.linkedinLabel} {personalInfo.linkedin.replace(/^https?:\/\/(www\.)?/, 'www.')}</span>
+                <span>{t.cvModal.githubLabel} {personalInfo.github.replace('https://', '')}</span>
+                <span>{t.cvModal.locationLabel} {t.cvModal.locationValue}</span>
               </div>
             </div>
 
@@ -79,7 +94,7 @@ export const CvModal: React.FC<CvModalProps> = ({ isOpen, onClose }) => {
               <div className="p-1 bg-retro-surface border-2 border-retro-border pixel-box shadow-[2px_2px_0px_#2C221E] cv-print-photo-frame">
                 <img
                   src={profilePic}
-                  alt={CV_DATA.name}
+                  alt={cvData.name}
                   className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 object-cover object-center border border-retro-border cv-print-photo"
                 />
               </div>
@@ -89,20 +104,20 @@ export const CvModal: React.FC<CvModalProps> = ({ isOpen, onClose }) => {
           {/* Summary */}
           <div className="cv-print-break-avoid">
             <h2 className="font-pixel text-xs text-retro-yellow font-bold uppercase mb-2 cv-print-section-title">
-              // RESUMEN TÉCNICO
+              {t.cvModal.techSummary}
             </h2>
             <p className="text-retro-ink cv-print-summary">
-              {CV_DATA.summary}
+              {cvData.summary}
             </p>
           </div>
 
           {/* Competencies */}
           <div className="cv-print-break-avoid">
             <h2 className="font-pixel text-xs text-retro-cyan font-bold uppercase mb-3 cv-print-section-title">
-              // STACK &amp; CAPACIDADES
+              {t.cvModal.stackCapabilities}
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 cv-print-grid-2">
-              {SKILL_CATEGORIES.map((cat) => (
+              {skillCategories.map((cat) => (
                 <div key={cat.title} className="p-3 bg-retro-surface border-2 border-retro-border cv-print-card">
                   <div className="font-pixel text-[10px] text-retro-ink font-bold mb-2 cv-print-card-title">{cat.title}</div>
                   <div className="space-y-1 text-base text-retro-inkMuted">
@@ -123,10 +138,10 @@ export const CvModal: React.FC<CvModalProps> = ({ isOpen, onClose }) => {
           <div className="cv-print-break-avoid">
             <h2 className="font-pixel text-xs text-retro-green font-bold uppercase mb-3 flex items-center gap-2 cv-print-section-title">
               <Briefcase className="w-4 h-4 text-retro-green print:hidden" />
-              <span>// TRAYECTORIA</span>
+              <span>{t.cvModal.experience}</span>
             </h2>
             <div className="space-y-4 cv-print-exp-list">
-              {CV_DATA.experience.map((exp, idx) => (
+              {cvData.experience.map((exp, idx) => (
                 <div key={idx} className="p-3 bg-retro-surface border-2 border-retro-border cv-print-card cv-print-item">
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
                     <h3 className="font-pixel text-xs text-retro-ink font-bold cv-print-card-title">{exp.role}</h3>
@@ -143,10 +158,10 @@ export const CvModal: React.FC<CvModalProps> = ({ isOpen, onClose }) => {
           <div className="cv-print-break-avoid">
             <h2 className="font-pixel text-xs text-retro-yellow font-bold uppercase mb-3 flex items-center gap-2 cv-print-section-title">
               <GraduationCap className="w-4 h-4 text-retro-yellow print:hidden" />
-              <span>// EDUCACIÓN</span>
+              <span>{t.cvModal.education}</span>
             </h2>
             <div className="space-y-2 cv-print-edu-list">
-              {CV_DATA.education.map((edu, idx) => (
+              {cvData.education.map((edu, idx) => (
                 <div key={idx} className="p-3 bg-retro-surface border-2 border-retro-border cv-print-card cv-print-item">
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
                     <div className="font-pixel text-xs text-retro-ink font-bold cv-print-card-title">{edu.degree}</div>
@@ -161,15 +176,16 @@ export const CvModal: React.FC<CvModalProps> = ({ isOpen, onClose }) => {
 
         {/* Modal Footer */}
         <div className="px-5 py-3 bg-retro-surface border-t-4 border-retro-border flex items-center justify-between font-pixel text-[10px] text-retro-inkMuted no-print">
-          <span>{PERSONAL_INFO.handle} // UGR (GRANADA)</span>
+          <span>{personalInfo.handle} // UGR (GRANADA)</span>
           <button
             onClick={onClose}
             className="pixel-btn px-3 py-1 bg-retro-panel text-retro-ink hover:bg-retro-surface"
           >
-            [ CERRAR ]
+            {t.cvModal.closeBtn}
           </button>
         </div>
       </div>
     </div>
   );
 };
+

@@ -1,8 +1,14 @@
 import React from 'react';
 import { ArrowUp, Instagram, Mail } from 'lucide-react';
-import { PERSONAL_INFO } from '../data/portfolioData';
+import { useLanguage } from '../context/LanguageContext';
+import { getPersonalInfo } from '../data/portfolioData';
+import { getTranslations } from '../data/translations';
 
 export const Footer: React.FC = () => {
+  const { language } = useLanguage();
+  const personalInfo = getPersonalInfo(language);
+  const t = getTranslations(language);
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -14,15 +20,15 @@ export const Footer: React.FC = () => {
           {/* Identity */}
           <div className="flex items-center gap-2 text-retro-ink">
             <span className="text-retro-green font-bold">&gt;</span>
-            <span className="font-bold">{PERSONAL_INFO.handle}</span>
+            <span className="font-bold">{personalInfo.handle}</span>
             <span className="text-retro-borderMuted">/</span>
-            <span className="text-retro-inkMuted">{PERSONAL_INFO.name}</span>
+            <span className="text-retro-inkMuted">{personalInfo.name}</span>
           </div>
 
           {/* Social Links: Instagram & Email */}
           <div className="flex items-center gap-5 font-bold">
             <a
-              href={PERSONAL_INFO.instagram}
+              href={personalInfo.instagram}
               target="_blank"
               rel="noopener noreferrer"
               className="text-retro-ink hover:text-retro-red flex items-center gap-1.5 transition-colors"
@@ -32,7 +38,7 @@ export const Footer: React.FC = () => {
             </a>
 
             <a
-              href={`mailto:${PERSONAL_INFO.email}`}
+              href={`mailto:${personalInfo.email}`}
               className="text-retro-ink hover:text-retro-yellow flex items-center gap-1.5 transition-colors"
             >
               <Mail className="w-3.5 h-3.5" />
@@ -44,9 +50,9 @@ export const Footer: React.FC = () => {
           <button
             onClick={scrollToTop}
             className="pixel-btn px-2.5 py-1 bg-retro-panel text-retro-ink hover:bg-retro-greenPastel flex items-center gap-1"
-            aria-label="Volver arriba"
+            aria-label={language === 'en' ? 'Back to top' : 'Volver arriba'}
           >
-            <span>TOP</span>
+            <span>{t.footer.top}</span>
             <ArrowUp className="w-3 h-3 text-retro-green" />
           </button>
         </div>
@@ -54,13 +60,14 @@ export const Footer: React.FC = () => {
         {/* Bottom */}
         <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-retro-inkLight text-[9px]">
           <div>
-            (C) {new Date().getFullYear()} {PERSONAL_INFO.name}. TODOS LOS DERECHOS RESERVADOS.
+            (C) {new Date().getFullYear()} {personalInfo.name}. {t.footer.rightsReserved}
           </div>
           <div>
-            SYSTEM_ID: X86_64 // RELEASE
+            {t.footer.systemId}
           </div>
         </div>
       </div>
     </footer>
   );
 };
+

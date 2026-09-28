@@ -1,9 +1,15 @@
 import React from 'react';
 import { Github, Linkedin, Cpu, HardDrive, Shield, MapPin, Terminal, CheckCircle2 } from 'lucide-react';
-import { PERSONAL_INFO } from '../data/portfolioData';
+import { useLanguage } from '../context/LanguageContext';
+import { getPersonalInfo } from '../data/portfolioData';
+import { getTranslations } from '../data/translations';
 import profilePic from '../data/yo.jpg';
 
 export const Hero: React.FC = () => {
+  const { language } = useLanguage();
+  const personalInfo = getPersonalInfo(language);
+  const t = getTranslations(language);
+
   return (
     <section
       id="inicio"
@@ -14,12 +20,12 @@ export const Hero: React.FC = () => {
         <div className="flex flex-wrap items-center justify-between gap-2 p-2 sm:p-2.5 mb-3 bg-retro-surface pixel-box font-pixel text-[8px] sm:text-[10px] lg:text-xs text-retro-inkMuted shrink-0">
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 bg-retro-greenPastel animate-pulse inline-block border border-retro-border" />
-            <span className="text-retro-green font-bold">STATUS: 5TO_CURSO_ACTIVO</span>
+            <span className="text-retro-green font-bold">{t.hero.status}</span>
           </div>
           <div className="flex flex-wrap items-center gap-3 sm:gap-4 lg:gap-6 text-retro-inkMuted">
-            <span className="text-retro-ink font-bold">GRADO: INF + ADE</span>
-            <span className="text-retro-yellow font-bold">UNIV: UGR (GRANADA)</span>
-            <span className="text-retro-cyan font-bold">MENCIÓN: ING_SOFTWARE</span>
+            <span className="text-retro-ink font-bold">{t.hero.degree}</span>
+            <span className="text-retro-yellow font-bold">{t.hero.univ}</span>
+            <span className="text-retro-cyan font-bold">{t.hero.major}</span>
           </div>
         </div>
 
@@ -31,22 +37,22 @@ export const Hero: React.FC = () => {
               <div>
                 {/* Tag / Role - Responsive, wraps gracefully on mobile without clipping */}
                 <div className="inline-block max-w-full px-2.5 sm:px-3 py-1 mb-2 bg-retro-surface border-2 border-retro-border text-retro-green font-pixel text-[8px] sm:text-[10px] lg:text-xs font-bold shadow-[2px_2px_0px_#2C221E] leading-relaxed break-words [overflow-wrap:anywhere]">
-                  &gt; DOBLE_GRADO :: INGENIERÍA_INFORMÁTICA_Y_ADE :: UGR
+                  {t.hero.tag}
                 </div>
 
                 {/* Name / Title */}
                 <h1 className="font-pixel text-xl sm:text-3xl lg:text-4xl text-retro-ink tracking-wide leading-tight">
-                  {PERSONAL_INFO.name}
+                  {personalInfo.name}
                 </h1>
 
                 <div className="font-pixel text-xs sm:text-sm text-retro-yellow mt-1.5 flex items-center gap-2 font-bold">
-                  <span>ALIAS:</span>
-                  <span className="text-retro-cyan">@{PERSONAL_INFO.handle}</span>
+                  <span>{t.hero.alias}</span>
+                  <span className="text-retro-cyan">@{personalInfo.handle}</span>
                 </div>
 
                 {/* Direct Technical Subtext */}
                 <p className="mt-2.5 sm:mt-3 text-lg sm:text-xl lg:text-[22px] xl:text-[25px] text-retro-ink font-arcade leading-relaxed">
-                  {PERSONAL_INFO.subtext}
+                  {personalInfo.subtext}
                 </p>
               </div>
 
@@ -55,30 +61,30 @@ export const Hero: React.FC = () => {
                 <div className="p-2.5 sm:p-3 bg-retro-surface border-2 border-retro-border shadow-[2px_2px_0px_#2C221E] flex flex-col items-center justify-center text-center">
                   <Cpu className="w-5 h-5 sm:w-6 sm:h-6 text-retro-green mb-1 shrink-0" />
                   <div className="text-[8px] sm:text-[9px] font-pixel text-retro-inkLight uppercase leading-tight text-center">
-                    INGENIERÍA SOFTWARE
+                    {t.hero.metric1Title}
                   </div>
                   <div className="text-retro-green font-arcade font-bold text-base sm:text-lg lg:text-xl leading-tight mt-1 text-center">
-                    Diseño modular y valor
+                    {t.hero.metric1Desc}
                   </div>
                 </div>
 
                 <div className="p-2.5 sm:p-3 bg-retro-surface border-2 border-retro-border shadow-[2px_2px_0px_#2C221E] flex flex-col items-center justify-center text-center">
                   <HardDrive className="w-5 h-5 sm:w-6 sm:h-6 text-retro-cyan mb-1 shrink-0" />
                   <div className="text-[8px] sm:text-[9px] font-pixel text-retro-inkLight uppercase leading-tight text-center">
-                    SISTEMAS &amp; ARQUITECTURA
+                    {t.hero.metric2Title}
                   </div>
                   <div className="text-retro-cyan font-arcade font-bold text-base sm:text-lg lg:text-xl leading-tight mt-1 text-center">
-                    Distribuidos y concurrencia
+                    {t.hero.metric2Desc}
                   </div>
                 </div>
 
                 <div className="p-2.5 sm:p-3 bg-retro-surface border-2 border-retro-border shadow-[2px_2px_0px_#2C221E] flex flex-col items-center justify-center text-center">
                   <Shield className="w-5 h-5 sm:w-6 sm:h-6 text-retro-yellow mb-1 shrink-0" />
                   <div className="text-[8px] sm:text-[9px] font-pixel text-retro-inkLight uppercase leading-tight text-center">
-                    VISIÓN NEGOCIO &amp; ADE
+                    {t.hero.metric3Title}
                   </div>
                   <div className="text-retro-yellow font-arcade font-bold text-base sm:text-lg lg:text-xl leading-tight mt-1 text-center">
-                    Estrategia y equipo
+                    {t.hero.metric3Desc}
                   </div>
                 </div>
               </div>
@@ -86,23 +92,23 @@ export const Hero: React.FC = () => {
               {/* Pixel Social Links: GitHub & LinkedIn */}
               <div className="flex flex-wrap items-center gap-3 pt-0.5">
                 <a
-                  href={PERSONAL_INFO.github}
+                  href={personalInfo.github}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="pixel-btn px-5 py-2.5 sm:px-6 sm:py-3 bg-retro-greenPastel hover:bg-retro-greenLight text-retro-ink font-pixel text-xs sm:text-sm font-bold border-2 border-retro-border flex items-center gap-2"
                 >
                   <Github className="w-4 h-4 text-retro-ink" />
-                  <span>GITHUB /Leonin04</span>
+                  <span>{t.hero.githubBtn}</span>
                 </a>
 
                 <a
-                  href={PERSONAL_INFO.linkedin}
+                  href={personalInfo.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="pixel-btn px-5 py-2.5 sm:px-6 sm:py-3 bg-retro-cyanPastel hover:bg-retro-cyanLight text-retro-ink font-pixel text-xs sm:text-sm font-bold border-2 border-retro-border flex items-center gap-2"
                 >
                   <Linkedin className="w-4 h-4 text-retro-ink" />
-                  <span>LINKEDIN /david-bacas</span>
+                  <span>{t.hero.linkedinBtn}</span>
                 </a>
               </div>
             </div>
@@ -114,16 +120,16 @@ export const Hero: React.FC = () => {
                 <div className="w-full flex items-center justify-between pb-2 mb-2.5 border-b-2 border-retro-border font-pixel text-[10px] sm:text-xs text-retro-inkMuted px-1">
                   <span className="flex items-center gap-2 text-retro-green font-bold tracking-wider">
                     <span className="w-2 h-2 bg-retro-greenPastel inline-block border border-retro-border animate-pulse" />
-                    PHOTO::OPERATOR
+                    {t.hero.photoHeader}
                   </span>
-                  <span className="text-retro-yellow font-bold tracking-wider">5º CURSO</span>
+                  <span className="text-retro-yellow font-bold tracking-wider">{t.hero.photoYear}</span>
                 </div>
 
                 {/* Photo frame - controlled height to avoid getting too tall while wide */}
                 <div className="w-full h-56 sm:h-64 lg:h-[275px] xl:h-[290px] overflow-hidden border-2 border-retro-border bg-retro-panel relative group">
                   <img
                     src={profilePic}
-                    alt={PERSONAL_INFO.name}
+                    alt={personalInfo.name}
                     className="w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
                   />
                   {/* Subtle pixel scanlines/corners */}
@@ -136,7 +142,7 @@ export const Hero: React.FC = () => {
                 {/* Footer bar of photo */}
                 <div className="w-full mt-2.5 pt-2.5 border-t-2 border-retro-border flex items-center justify-between font-pixel text-[10px] sm:text-xs text-retro-inkLight px-1">
                   <span className="tracking-wider font-bold">DAVID</span>
-                  <span className="text-retro-cyan font-bold tracking-wider">UGR // INF+ADE</span>
+                  <span className="text-retro-cyan font-bold tracking-wider">{t.hero.photoFootRole}</span>
                 </div>
               </div>
 
@@ -145,23 +151,23 @@ export const Hero: React.FC = () => {
                 <div className="flex items-center justify-between px-1">
                   <span className="flex items-center gap-2 text-retro-inkLight tracking-wide">
                     <MapPin className="w-3.5 h-3.5 text-retro-yellow shrink-0" />
-                    UBICACIÓN:
+                    {t.hero.locationLabel}
                   </span>
-                  <span className="text-retro-yellow font-bold tracking-wider">GRANADA, ES</span>
+                  <span className="text-retro-yellow font-bold tracking-wider">{t.hero.locationValue}</span>
                 </div>
                 <div className="flex items-center justify-between px-1">
                   <span className="flex items-center gap-2 text-retro-inkLight tracking-wide">
                     <CheckCircle2 className="w-3.5 h-3.5 text-retro-green shrink-0" />
-                    ENFOQUE:
+                    {t.hero.focusLabel}
                   </span>
-                  <span className="text-retro-green font-bold tracking-wider">ING_SOFTWARE</span>
+                  <span className="text-retro-green font-bold tracking-wider">{t.hero.focusValue}</span>
                 </div>
                 <div className="flex items-center justify-between px-1">
                   <span className="flex items-center gap-2 text-retro-inkLight tracking-wide">
                     <Terminal className="w-3.5 h-3.5 text-retro-cyan shrink-0" />
-                    ENTORNO:
+                    {t.hero.envLabel}
                   </span>
-                  <span className="text-retro-cyan font-bold tracking-wider">LINUX / WINDOWS</span>
+                  <span className="text-retro-cyan font-bold tracking-wider">{t.hero.envValue}</span>
                 </div>
               </div>
             </div>
@@ -171,3 +177,4 @@ export const Hero: React.FC = () => {
     </section>
   );
 };
+
